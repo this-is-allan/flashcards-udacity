@@ -5,17 +5,18 @@ import {
   FlatList,
   TouchableOpacity
 } from 'react-native';
-import { fetchDecks } from '../../util/storageApi';
+import { connect } from "react-redux";
+import { decksFetch } from './../../actions/decks';
 
 import DeckListItem from './DeckListItem';
 
-export default class DeckList extends Component {
+class DeckList extends Component {
   state = {
-    items: []
+    decks: []
   }
   
   componentDidMount() {
-    fetchDecks().then(items => this.setState({ items }))
+    this.props.fetchDecks().then(({decks}) => this.setState({ decks }))
   }
 
   _keyExtractor = (item, index) => index.toString()
@@ -37,7 +38,7 @@ export default class DeckList extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={Object.values(this.state.items)}
+          data={Object.values(this.state.decks)}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
         />
@@ -52,3 +53,17 @@ const styles = StyleSheet.create({
     paddingTop: 10
   }
 });
+
+const mapStateToProps = ({ decks }) => {
+  return {
+    decks
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchDecks: () => dispatch(decksFetch())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckList)

@@ -1,11 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import reducer from './reducers'
 
 import HomeScreen from './screens/Home';
 import DeckList from './components/deck/DeckList.js';
 import DeckShow from './components/deck/DeckShow.js';
 import DeckCreate from './components/deck/DeckCreate.js';
+
+const store = createStore(reducer, applyMiddleware(thunk))
 
 const Tabs = createBottomTabNavigator({
   DeckList: {
@@ -41,9 +47,11 @@ const AppNavigator = createStackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <AppNavigator />
-      </View>
+      <Provider store={store}>
+        <View style={{flex: 1}}>
+          <AppNavigator />
+        </View>
+      </Provider>
     );
   }
 }
