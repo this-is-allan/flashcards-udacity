@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity
+} from 'react-native';
 import { fetchDecks } from '../../util/storageApi';
+
+import DeckListItem from './DeckListItem';
 
 export default class DeckList extends Component {
   state = {
@@ -11,16 +18,28 @@ export default class DeckList extends Component {
     fetchDecks().then(items => this.setState({ items }))
   }
 
+  _keyExtractor = (item, index) => index.toString()
+
+  _renderItem = ({item}) => (
+    <View>
+      <TouchableOpacity onPress={() =>
+        this.props.navigation.navigate('DeckShow', item)}>
+        <DeckListItem
+          id={item.id}
+          title={item.title}
+        />
+      </TouchableOpacity>
+    </View>
+  )
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.container}>
         <FlatList
           data={Object.values(this.state.items)}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
         />
-      </View>
       </View>
     );
   }
@@ -30,10 +49,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 10
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
+  }
 });
