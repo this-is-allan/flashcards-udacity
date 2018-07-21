@@ -5,12 +5,19 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import HomeScreen from './screens/Home';
 import DeckList from './components/deck/DeckList.js';
 import DeckShow from './components/deck/DeckShow.js';
+import DeckCreate from './components/deck/DeckCreate.js';
 
 const Tabs = createBottomTabNavigator({
   DeckList: {
     screen: DeckList,
     navigationOptions: {
       tabBarLabel: 'All Decks'
+    }
+  },
+  CreateDeck: {
+    screen: DeckCreate,
+    navigationOptions: {
+      tabBarLabel: 'Create a Deck'
     }
   }
 })
