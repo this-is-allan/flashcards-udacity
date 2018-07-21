@@ -27,6 +27,7 @@ export default class DeckList extends Component {
         <DeckListItem
           id={item.id}
           title={item.title}
+          length={item.questions.length}
         />
       </TouchableOpacity>
     </View>

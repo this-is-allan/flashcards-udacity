@@ -3,7 +3,7 @@ import { StyleSheet, Text } from 'react-native';
 
 export default function DeckListItem( item ) {
   return (
-      <Text style={styles.item}>{item.title}</Text>
+      <Text style={styles.item}>{item.title} ({item.length})</Text>
   )
 }
 
