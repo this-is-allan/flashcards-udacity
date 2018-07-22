@@ -1,5 +1,6 @@
-import { fetchDecks } from './../util/storageApi';
+import { fetchDecks, createDeck } from './../util/storageApi';
 
+// Decks List
 export const REQUEST_DECKS = "REQUEST_DECKS";
 
 export const DECKS_FETCH_ERROR = "DECKS_FETCH_ERROR";
@@ -34,4 +35,33 @@ export function decksFetch() {
             err => dispatch(decksFetchError(true))
         );
     };
+}
+
+// Create Deck
+export const CREATE_SUCCESS = "CREATE_SUCCESS";
+export function createSuccess(bool) {
+    return {
+        type: CREATE_SUCCESS,
+        created: bool
+    };
+}
+
+export const CREATE_ERROR = "CREATE_ERROR";
+export function createError(bool) {
+    return {
+        type: CREATE_ERROR,
+        error: bool
+    };
+}
+
+export function newDeck(deck, callback) {
+    return dispatch => {
+        return createDeck(deck).then(
+            response => {
+                callback()
+                dispatch(createSuccess(true))
+            },
+            err => dispatch(createError(true))
+        )
+    }
 }

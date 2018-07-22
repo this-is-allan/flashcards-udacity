@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import { createDeck } from '../../util/storageApi';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { connect } from 'react-redux';
+import { newDeck, decksFetch } from '../../actions/decks';
 
-export default class DeckCreate extends Component {
+class DeckCreate extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: 'Useless Placeholder'
+      name: ''
     }
   }
 
   onPressCreateDeck = () => {
     const entry = this.state
-    
     const newDeck = {
-      [entry.text]: {
+      [entry.name]: {
         title: entry.name,
         questions: []
       }
     }
 
-    createDeck(newDeck).then(() => this.setState({ name: '' }))
+    this.props.createDeck(newDeck, () => {
+      this.setState({ name: '' })
+      this.props.navigation.navigate('DeckList')
+    })
   }
 
   render() {
@@ -55,3 +58,12 @@ const styles = StyleSheet.create({
     margin: 30
   }
 });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createDeck: (deck, callback) => dispatch(newDeck(deck, callback)),
+    fetchDecks: () => dispatch(decksFetch())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DeckCreate)
