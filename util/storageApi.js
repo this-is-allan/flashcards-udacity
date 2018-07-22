@@ -28,6 +28,17 @@ let data = {
 	}
 };
 
+export function deleteDeck(deck) {
+	return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+		.then(results => {
+			const data = JSON.parse(results)
+			data[deck] = undefined
+			delete data[deck]
+			AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data))
+		}
+	)
+}
+
 export function fetchDecks() {
 	return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(results => {
 		return results === null ? initialData() : JSON.parse(results)

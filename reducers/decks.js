@@ -2,7 +2,8 @@ import {
 	DECKS_FETCH_ERROR,
 	REQUEST_DECKS,
 	RECEIVE_DECKS,
-	DECKS_IS_FETCHING
+	DECKS_IS_FETCHING,
+	DELETE_DECK
 } from './../actions/decks';
 
 export default function decks(
@@ -33,6 +34,8 @@ export default function decks(
 				fetchError: false,
 				decks: action.decks.decks
 			})
+		case DELETE_DECK:
+			return _.omit(state, action.payload)
 		default:
 			return state
 	}

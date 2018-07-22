@@ -1,4 +1,4 @@
-import { fetchDecks, createDeck } from './../util/storageApi';
+import { fetchDecks, createDeck, deleteDeck } from './../util/storageApi';
 
 // Decks List
 export const REQUEST_DECKS = "REQUEST_DECKS";
@@ -62,6 +62,16 @@ export function newDeck(deck, callback) {
                 dispatch(createSuccess(true))
             },
             err => dispatch(createError(true))
+        )
+    }
+}
+
+// Delete deck
+export const DELETE_DECK = "DELETE_DECK";
+export function removeDeck(deck, callback) {
+    return dispatch => {
+        return deleteDeck(deck).then(
+            response => callback()
         )
     }
 }
