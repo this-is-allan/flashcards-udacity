@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch} from './../../actions/decks'
+import { Ionicons } from '@expo/vector-icons';
 
 class DeckShow extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={styles.backButton} />,
+  });
+
   state = {
     deck: []
   }
@@ -44,6 +49,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 10
   },
+  backButton: {
+    marginLeft: 15
+  }
 });
 
 mapStateToProps = ({deck}) => {
