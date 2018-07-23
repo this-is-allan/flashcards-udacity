@@ -19,7 +19,7 @@ class DeckCreate extends Component {
 
     this.props.createDeck(newDeck, () => {
       this.setState({ name: '' })
-      this.props.navigation.navigate('DeckList')
+      this.props.navigation.navigate('DeckShow', { title: entry.name })
     })
   }
 
