@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
@@ -13,8 +14,7 @@ class DeckShow extends Component {
     const { title } = this.props.navigation.state.params
     this.props.deckFetch(title)
   };
-  
-  
+
   onPressDeleteDeck = () => {
     const { title } = this.props.deck
 
@@ -23,17 +23,26 @@ class DeckShow extends Component {
     })
   }
 
+  onPressStartQuiz = () => {
+    this.props.navigation.navigate('Quiz')
+  }
+
   render() {
-    const { title } = this.props.deck
+    const { title, questions } = this.props.deck
 
     return (
       <View style={styles.container}>
-        <Text>{title}</Text>
+        <Text>{title} ({_.size(questions)})</Text>
 
         <Button
           onPress={this.onPressDeleteDeck}
           title="Delete Deck"
-          color="#841584"
+          color="#000"
+        />
+        <Button
+          onPress={this.onPressStartQuiz}
+          title="Start Quiz"
+          color="red"
         />
       </View>
     );

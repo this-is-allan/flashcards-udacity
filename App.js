@@ -7,9 +7,10 @@ import thunk from 'redux-thunk'
 import reducer from './reducers'
 
 import HomeScreen from './screens/Home';
-import DeckList from './components/deck/DeckList.js';
-import DeckShow from './components/deck/DeckShow.js';
-import DeckCreate from './components/deck/DeckCreate.js';
+import DeckList from './components/deck/DeckList';
+import DeckShow from './components/deck/DeckShow';
+import DeckCreate from './components/deck/DeckCreate';
+import QuizShow from './components/quiz/QuizShow';
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
@@ -40,6 +41,13 @@ const AppNavigator = createStackNavigator({
     path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.title}'s Deck`
+    })
+  },
+  Quiz: {
+    screen: QuizShow,
+    path: 'decks/:name',
+    navigationOptions: ({ navigation }) => ({
+      title: 'Quiz'
     })
   }
 })
