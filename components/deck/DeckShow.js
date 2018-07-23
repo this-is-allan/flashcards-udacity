@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { removeDeck } from './../../actions/decks'
+import { removeDeck, deckFetch} from './../../actions/decks'
 
 class DeckShow extends Component {
-  onPressDeleteDeck = () => {
+  state = {
+    deck: []
+  }
+
+  componentDidMount = () => {
     const { title } = this.props.navigation.state.params
+    this.props.deckFetch(title)
+  };
+  
+  
+  onPressDeleteDeck = () => {
+    const { title } = this.props.deck
 
     this.props.deleteDeck(title, () => {
       this.props.navigation.navigate('DeckList')
@@ -13,8 +23,8 @@ class DeckShow extends Component {
   }
 
   render() {
-    const { title } = this.props.navigation.state.params
-    
+    const { title } = this.props.deck
+
     return (
       <View style={styles.container}>
         <Text>{title}</Text>
@@ -36,10 +46,17 @@ const styles = StyleSheet.create({
   },
 });
 
+mapStateToProps = ({deck}) => {
+  return {
+    deck: deck.deck
+  }
+}
+
 mapDispatchToProps = dispatch => {
   return {
+    deckFetch: id => dispatch(deckFetch(id)),
     deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
   }
 }
 
-export default connect(null, mapDispatchToProps)(DeckShow);
+export default connect(mapStateToProps, mapDispatchToProps)(DeckShow);

@@ -1,4 +1,21 @@
-import { fetchDecks, createDeck, deleteDeck } from './../util/storageApi';
+import { getDeck, fetchDecks, createDeck, deleteDeck } from './../util/storageApi';
+
+// Fetch Deck
+export const RECEIVE_DECK = "RECEIVE_DECK";
+export function receiveDeck(deck) {
+    return {
+        type: RECEIVE_DECK,
+        deck
+    };
+}
+
+export function deckFetch(key) {
+    return dispatch => {
+        return getDeck(key).then(
+            response => dispatch(receiveDeck(response))
+        );
+    };
+}
 
 // Decks List
 export const REQUEST_DECKS = "REQUEST_DECKS";

@@ -45,6 +45,13 @@ export function fetchDecks() {
 	});
 }
 
+export function getDeck(key) {
+	return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(results => {
+		const data = JSON.parse(results)
+		return data[key]
+	})
+}
+
 export function createDeck(deck) {
 	return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck));
 }
