@@ -9,10 +9,6 @@ class DeckShow extends Component {
     headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={styles.backButton} />,
   });
 
-  state = {
-    deck: []
-  }
-
   componentDidMount = () => {
     const { title } = this.props.navigation.state.params
     this.props.deckFetch(title)
