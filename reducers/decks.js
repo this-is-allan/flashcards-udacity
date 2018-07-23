@@ -32,7 +32,7 @@ export default function decks(
 			return Object.assign({}, state, {
 				isFetching: false,
 				fetchError: false,
-				decks: action.decks.decks
+				decks: action.decks
 			})
 		case DELETE_DECK:
 			return _.omit(state, action.payload)

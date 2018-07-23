@@ -12,12 +12,8 @@ import { decksFetch } from './../../actions/decks';
 import DeckListItem from './DeckListItem';
 
 class DeckList extends Component {
-  state = {
-    decks: []
-  }
-  
   componentDidMount() {
-    this.props.fetchDecks().then(({decks}) => this.setState({ decks }))
+    this.props.fetchDecks()
   }
 
   _keyExtractor = (item, index) => index.toString()
@@ -39,7 +35,7 @@ class DeckList extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={Object.values(this.state.decks)}
+          data={Object.values(this.props.decks)}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderItem}
         />
@@ -57,7 +53,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ decks }) => {
   return {
-    decks
+    decks: decks.decks
   }
 }
 

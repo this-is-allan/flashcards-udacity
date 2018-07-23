@@ -4,11 +4,8 @@ import { connect } from 'react-redux';
 import { newDeck, decksFetch } from '../../actions/decks';
 
 class DeckCreate extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: ''
-    }
+  state = {
+    name: ''
   }
 
   onPressCreateDeck = () => {

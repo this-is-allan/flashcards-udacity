@@ -37,7 +37,7 @@ const AppNavigator = createStackNavigator({
   },
   DeckShow: {
     screen: DeckShow,
-    path: 'deck/:name',
+    path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.title}'s Deck`
     })
