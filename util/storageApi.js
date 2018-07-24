@@ -56,8 +56,9 @@ export function createDeck(deck) {
 	return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck));
 }
 
-export function addQuestionForDeck({ card, deckName }) {
+export function addQuestionForDeck(card, deckName) {
 	return AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+		console.log('card',card)
 		let decks = JSON.parse(result);
 
 		let newQuestions = JSON.parse(JSON.stringify(decks[deckName].questions));

@@ -12,7 +12,8 @@ class QuizShow extends Component {
 		currentQuestion: 0,
 		questionsLength: 0,
 		correctQuestions: 0,
-		showAnswer: false
+		showAnswer: false,
+		cardFlipped: false,
 	}
 
 	componentDidMount = () => {
@@ -22,10 +23,18 @@ class QuizShow extends Component {
 	
 	onPressNext = (correct) => {
 		correct && this.setState({ correctQuestions: this.state.correctQuestions + 10 })
-		this.setState({
-			currentQuestion: ++this.state.currentQuestion,
-			showAnswer: false
-		})
+
+		if (this.state.cardFlipped === true) {
+			this.card.flip()
+		}
+
+		setTimeout(() => {
+			this.setState({
+				showAnswer: false,
+				currentQuestion: ++this.state.currentQuestion,
+			})
+		}, 200);
+		
 	}
 	
 	render() {
@@ -34,7 +43,7 @@ class QuizShow extends Component {
 			currentQuestion,
 			questionsLength,
 			correctQuestions,
-			showAnswer
+			showAnswer,
 		} = this.state
 
 		if (currentQuestion === questionsLength) {
@@ -45,12 +54,15 @@ class QuizShow extends Component {
 				</View>
 			)
 		}
+
 		return (
 			<View style={styles.container}>
 				<Text>{currentQuestion+1}/{questionsLength}</Text>
+
+				
 				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={styles.cardContainer} ref={(card) => this.card = card} >
-					<TouchableOpacity style={styles.card} onPress={() => this.card.flip()} ><Text>{questions[currentQuestion].question}</Text></TouchableOpacity>
-					<TouchableOpacity style={styles.card} onPress={() => this.card.flip()} ><Text>{questions[currentQuestion].answer}</Text></TouchableOpacity>
+					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text>{questions[currentQuestion].question}</Text></TouchableOpacity>
+					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}} ><Text>{questions[currentQuestion].answer}</Text></TouchableOpacity>
 				</CardFlip>
 
 				<Button disabled={!showAnswer} title='Correct' color='green' onPress={() => this.onPressNext(true)} />
@@ -82,7 +94,7 @@ const styles = StyleSheet.create({
       height: 1
     },
     shadowOpacity:0.5,
-  },
+	},
   card1: {
     backgroundColor: '#FE474C',
   },

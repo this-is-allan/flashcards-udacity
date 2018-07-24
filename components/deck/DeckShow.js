@@ -44,6 +44,11 @@ class DeckShow extends Component {
           title="Start Quiz"
           color="red"
         />
+        <Button
+          onPress={() => this.props.navigation.navigate('QuizCreate')}
+          title="Add Quiz"
+          color="purple"
+        />
       </View>
     );
   }

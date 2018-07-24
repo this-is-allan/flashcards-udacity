@@ -11,6 +11,7 @@ import DeckList from './components/deck/DeckList';
 import DeckShow from './components/deck/DeckShow';
 import DeckCreate from './components/deck/DeckCreate';
 import QuizShow from './components/quiz/QuizShow';
+import QuizCreate from './components/quiz/QuizCreate';
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
@@ -48,6 +49,12 @@ const AppNavigator = createStackNavigator({
     path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
       title: 'Quiz'
+    })
+  },
+  QuizCreate: {
+    screen: QuizCreate,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Add Quiz'
     })
   }
 })
