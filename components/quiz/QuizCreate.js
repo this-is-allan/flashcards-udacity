@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { newCard } from '../../actions/quiz';
+import { deckFetch } from '../../actions/decks';
 
 class QuizCreate extends Component {
   state = {
@@ -14,6 +15,7 @@ class QuizCreate extends Component {
     const { title } = this.props.deck
 
     this.props.addQuestion(card, title, () => {
+      this.props.deckFetch(title)
       this.setState({
           question: '',
           answer: ''
@@ -70,6 +72,7 @@ const mapStateToProps = ({ deck }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    deckFetch: deckName => dispatch(deckFetch(deckName)),
     addQuestion: (card, deckName, callback) => dispatch(newCard(card, deckName, callback))
   }
 }

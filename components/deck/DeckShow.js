@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { removeDeck, deckFetch} from './../../actions/decks'
+import { removeDeck, deckFetch, decksFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 
 class DeckShow extends Component {
@@ -19,6 +19,7 @@ class DeckShow extends Component {
     const { title } = this.props.deck
 
     this.props.deleteDeck(title, () => {
+      this.props.fetchDecks()
       this.props.navigation.navigate('DeckList')
     })
   }
@@ -73,6 +74,7 @@ mapStateToProps = ({deck}) => {
 mapDispatchToProps = dispatch => {
   return {
     deckFetch: id => dispatch(deckFetch(id)),
+    fetchDecks: () => dispatch(decksFetch()),
     deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
   }
 }

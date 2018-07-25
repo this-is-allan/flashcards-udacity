@@ -47,6 +47,7 @@ export function receiveDecks(decks) {
 export function decksFetch() {
     return dispatch => {
         dispatch(decksIsFetching(true));
+        console.log('passou aqui')
         return fetchDecks().then(
             response => dispatch(receiveDecks(response)),
             err => dispatch(decksFetchError(true))
