@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
-import FlipCard from 'react-native-flip-card';
 import CardFlip from 'react-native-card-flip';
 
 class QuizShow extends Component {
