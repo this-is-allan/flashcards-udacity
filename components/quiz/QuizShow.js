@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { removeDeck, deckFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
+import { clearLocalNotification } from '../../util/notifications'
 
 class QuizShow extends Component {
 	state = {
@@ -17,6 +18,7 @@ class QuizShow extends Component {
 
 	componentDidMount = () => {
 		this.setState({ questionsLength: this.props.deck.questions.length})
+		// clearLocalNotification()
 	};
 	
 	

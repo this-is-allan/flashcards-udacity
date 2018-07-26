@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
+import { setLocalNotification } from './util/notifications'
 
 import HomeScreen from './screens/Home';
 import DeckList from './components/deck/DeckList';
@@ -60,6 +61,10 @@ const AppNavigator = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  };
+  
   render() {
     return (
       <Provider store={store}>
