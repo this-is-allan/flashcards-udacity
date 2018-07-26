@@ -1,13 +1,16 @@
 import React from 'react';
-import { View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { View, Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
 import { setLocalNotification } from './util/notifications'
+import { Constants } from 'expo'
+import { dark, white, gray, gray2, black, sky } from './util/colors'
 
-import HomeScreen from './screens/Home';
+import AppStatusBar from './components/StatusBar/StatusBar';
 import DeckList from './components/deck/DeckList';
 import DeckShow from './components/deck/DeckShow';
 import DeckCreate from './components/deck/DeckCreate';
@@ -20,15 +23,28 @@ const Tabs = createBottomTabNavigator({
   DeckList: {
     screen: DeckList,
     navigationOptions: {
-      tabBarLabel: 'All Decks'
+      tabBarAccessibilityLabel: 'All Decks',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='home' size={30} color={tintColor} />
     }
   },
   CreateDeck: {
     screen: DeckCreate,
     navigationOptions: {
-      tabBarLabel: 'Create a Deck'
+      tabBarAccessibilityLabel: 'Create a Deck',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
     }
   }
+}, {
+  tabBarOptions: {
+    activeTintColor: dark,
+    inactiveTintColor: gray2,
+    showLabel: false,
+    showIcon: true,
+    style: {
+      backgroundColor: white,
+      shadowOpacity: 0
+    }
+  },
 })
 
 const AppNavigator = createStackNavigator({
@@ -58,6 +74,8 @@ const AppNavigator = createStackNavigator({
       title: 'Add Quiz'
     })
   }
+}, {
+  headerMode: 'screen'
 })
 
 export default class App extends React.Component {
@@ -69,6 +87,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
+          <AppStatusBar backgroundColor={gray} barStyle="dark-content" />
           <AppNavigator />
         </View>
       </Provider>
