@@ -1,0 +1,6 @@
+export const white = '#fff'
+export const black = '#000'
+export const dark = 'rgb(38,38,38)'
+export const gray2 = 'rgb(123,123,123)'
+export const gray = '#f1f1f1'
+export const sky = 'rgb(0, 201, 250)'
