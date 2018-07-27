@@ -27,12 +27,12 @@ class QuizCreate extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Create your question</Text>
         <TextInput
           style={styles.input}
           onChangeText={question => this.setState({question})}
           value={this.state.question}
           placeholder='Type a question'
+          autoFocus
           />
         <TextInput
           style={styles.input}
@@ -44,7 +44,6 @@ class QuizCreate extends Component {
         <Button
           onPress={this.onPressCreateQuestion}
           title="Add Question"
-          color="#841584"
         />
       </View>
     );
@@ -54,13 +53,11 @@ class QuizCreate extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10
+    padding: 20,
+    backgroundColor: '#fff',
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    margin: 30
+    height: 50,
   }
 });
 

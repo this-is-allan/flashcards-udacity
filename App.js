@@ -1,14 +1,13 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { View, Platform } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
 import { setLocalNotification } from './util/notifications'
-import { Constants } from 'expo'
-import { dark, white, gray, gray2, black, sky } from './util/colors'
+import { dark, white, gray2 } from './util/colors'
 
 import AppStatusBar from './components/StatusBar/StatusBar';
 import DeckList from './components/deck/DeckList';
@@ -47,6 +46,12 @@ const Tabs = createBottomTabNavigator({
   },
 })
 
+function HeaderLeft({ title }) {
+  return (
+    <Text style={{fontSize: 30, fontWeight: 'bold', paddingLeft: 15}}>{title}</Text>
+  )
+}
+
 const AppNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
@@ -71,11 +76,18 @@ const AppNavigator = createStackNavigator({
   QuizCreate: {
     screen: QuizCreate,
     navigationOptions: ({ navigation }) => ({
-      title: 'Add Quiz'
+      title: 'Create Question',
+      headerStyle: {
+        backgroundColor: white,
+        borderBottomWidth: 0,
+      },
     })
   }
 }, {
-  headerMode: 'screen'
+  // initialRouteName: 'QuizCreate',
+  headerMode: 'screen',
+  headerLayoutPreset: 'left',
+  headerMode: 'float',
 })
 
 export default class App extends React.Component {
@@ -87,7 +99,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <AppStatusBar backgroundColor={gray} barStyle="dark-content" />
+          <AppStatusBar backgroundColor={white} barStyle="dark-content" />
           <AppNavigator />
         </View>
       </Provider>
