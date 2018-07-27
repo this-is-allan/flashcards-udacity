@@ -59,6 +59,16 @@ const AppNavigator = createStackNavigator({
       title: 'Home'
     }
   },
+  CreateDeck: {
+    screen: DeckCreate,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Create a Deck',
+      headerStyle: {
+        backgroundColor: white,
+        borderBottomWidth: 0,
+      },
+    })
+  },
   DeckShow: {
     screen: DeckShow,
     path: 'decks/:name',
@@ -84,7 +94,7 @@ const AppNavigator = createStackNavigator({
     })
   }
 }, {
-  // initialRouteName: 'QuizCreate',
+  // initialRouteName: 'CreateDeck',
   headerMode: 'screen',
   headerLayoutPreset: 'left',
   headerMode: 'float',

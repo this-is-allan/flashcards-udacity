@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { newDeck, decksFetch } from '../../actions/decks';
+import { white } from '../../util/colors';
 
 class DeckCreate extends Component {
   state = {
@@ -27,17 +28,17 @@ class DeckCreate extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Create Deck Screen</Text>
         <TextInput
           style={styles.input}
           onChangeText={name => this.setState({name})}
           value={this.state.name}
+          placeholder='Type the deck name'
+          autoFocus
         />
 
         <Button
           onPress={this.onPressCreateDeck}
           title="Create Deck"
-          color="#841584"
         />
       </View>
     );
@@ -47,13 +48,11 @@ class DeckCreate extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10
+    padding: 20,
+    backgroundColor: white
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    margin: 30
+    height: 50,
   }
 });
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { newCard } from '../../actions/quiz';
 import { deckFetch } from '../../actions/decks';
+import { white } from '../../util/colors';
 
 class QuizCreate extends Component {
   state = {
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: white,
   },
   input: {
     height: 50,
