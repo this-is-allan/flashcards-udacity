@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch, decksFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
+import { white } from '../../util/colors';
 
 class DeckShow extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -33,22 +34,17 @@ class DeckShow extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>{title} ({_.size(questions)})</Text>
-
         <Button
           onPress={this.onPressDeleteDeck}
           title="Delete Deck"
-          color="#000"
         />
         <Button
           onPress={this.onPressStartQuiz}
           title="Start Quiz"
-          color="red"
         />
         <Button
           onPress={() => this.props.navigation.navigate('QuizCreate')}
           title="Add Quiz"
-          color="purple"
         />
       </View>
     );
@@ -58,7 +54,8 @@ class DeckShow extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10
+    padding: 20,
+    backgroundColor: white
   },
   backButton: {
     marginLeft: 15
