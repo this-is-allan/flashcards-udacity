@@ -56,7 +56,11 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
     navigationOptions: {
-      title: 'Home'
+      title: 'Home',
+      headerStyle: {
+        backgroundColor: white,
+        borderBottomWidth: 0,
+      },
     }
   },
   CreateDeck: {
