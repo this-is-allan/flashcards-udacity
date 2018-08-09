@@ -34,6 +34,7 @@ class DeckShow extends Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.deckTitle}>{title} ({_.size(questions)})</Text>
         <Button
           onPress={this.onPressDeleteDeck}
           title="Delete Deck"
@@ -59,6 +60,10 @@ const styles = StyleSheet.create({
   },
   backButton: {
     marginLeft: 15
+  },
+  deckTitle: {
+    fontSize: 32,
+    textAlign: 'center',
   }
 });
 
