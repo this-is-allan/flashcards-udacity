@@ -6,6 +6,7 @@ import { removeDeck, deckFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
 import { clearLocalNotification } from '../../util/notifications'
+import { white } from '../../util/colors';
 
 class QuizShow extends Component {
 	state = {
@@ -58,11 +59,11 @@ class QuizShow extends Component {
 
 		return (
 			<View style={styles.container}>
-				<Text>{currentQuestion+1}/{questionsLength}</Text>
+				<Text style={styles.quizTrack}>{currentQuestion+1}/{questionsLength}</Text>
 
 				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={styles.cardContainer} ref={(card) => this.card = card} >
-					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text>{questions[currentQuestion].question}</Text></TouchableOpacity>
-					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}} ><Text>{questions[currentQuestion].answer}</Text></TouchableOpacity>
+					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text style={styles.cardText}>{questions[currentQuestion].question}</Text></TouchableOpacity>
+					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}} ><Text style={styles.cardText}>{questions[currentQuestion].answer}</Text></TouchableOpacity>
 				</CardFlip>
 
 				<Button disabled={!showAnswer} title='Correct' color='green' onPress={() => this.onPressNext(true)} />
@@ -77,23 +78,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f9f9f9',
 	},
   cardContainer:{
     width: 320,
 		height: 470,
   },
   card:{
+		display: 'flex',
+		justifyContent: 'center',
     width: 320,
-    height: 470,
-    backgroundColor: '#f1f1f1',
+		height: 470,
+		padding: 30,
+    backgroundColor: white,
     borderRadius: 5,
-    shadowColor: 'rgba(0,0,0,0.5)',
+		shadowColor: 'rgba(0,0,0,.15)',
     shadowOffset: {
-      width: 0,
-      height: 1
+      width: 1,
+      height: 3
     },
     shadowOpacity:0.5,
+	},
+	cardText: {
+		fontSize: 18,
+		textAlign: 'center',
 	},
   card1: {
     backgroundColor: '#FE474C',
@@ -108,7 +116,10 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     color: '#ffffff',
     backgroundColor: 'transparent',
-  },
+	},
+	quizTrack: {
+		color: '#7f8fa6',
+	}
 });
 
 mapStateToProps = ({deck}) => {
