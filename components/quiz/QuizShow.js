@@ -60,7 +60,6 @@ class QuizShow extends Component {
 			<View style={styles.container}>
 				<Text>{currentQuestion+1}/{questionsLength}</Text>
 
-				
 				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={styles.cardContainer} ref={(card) => this.card = card} >
 					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text>{questions[currentQuestion].question}</Text></TouchableOpacity>
 					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}} ><Text>{questions[currentQuestion].answer}</Text></TouchableOpacity>
