@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { newDeck, decksFetch } from '../../actions/decks';
 import { white } from '../../util/colors';
@@ -11,18 +11,31 @@ class DeckCreate extends Component {
 
   onPressCreateDeck = () => {
     const entry = this.state
-    const newDeck = {
-      [entry.name]: {
-        title: entry.name,
-        questions: []
-      }
-    }
 
-    this.props.createDeck(newDeck, () => {
-      this.props.fetchDecks()
-      this.setState({ name: '' })
-      this.props.navigation.navigate('DeckShow', { title: entry.name })
-    })
+    if (entry.name !== '') {
+      const newDeck = {
+        [entry.name]: {
+          title: entry.name,
+          questions: []
+        }
+      }
+  
+      this.props.createDeck(newDeck, () => {
+        this.props.fetchDecks()
+        this.setState({ name: '' })
+        this.props.navigation.navigate('DeckShow', { title: entry.name })
+      })
+    } else {
+      Alert.alert(
+        'Deck name empty',
+        'The deck name can\'t to be empty',
+        [
+          {text: 'Ok'}
+        ],
+        { cancelable: false }
+      )
+    }
+    
   }
 
   render() {
