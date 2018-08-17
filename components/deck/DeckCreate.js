@@ -41,6 +41,8 @@ class DeckCreate extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>Create a deck</Text>
+
         <TextInput
           style={styles.input}
           onChangeText={name => this.setState({name})}
@@ -66,6 +68,11 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    paddingBottom: 20,
   }
 });
 

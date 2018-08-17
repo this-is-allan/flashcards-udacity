@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+  Text,
   FlatList,
   TouchableOpacity
 } from 'react-native';
@@ -34,6 +35,8 @@ class DeckList extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.title}>Your Decks</Text>
+
         <FlatList
           data={Object.values(this.props.decks)}
           keyExtractor={this._keyExtractor}
@@ -49,6 +52,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: white,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    paddingBottom: 20,
   }
 });
 

@@ -55,22 +55,8 @@ function HeaderLeft({ title }) {
 const AppNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
-    navigationOptions: {
-      title: 'Home',
-      headerStyle: {
-        backgroundColor: white,
-        borderBottomWidth: 0,
-      },
-    }
-  },
-  CreateDeck: {
-    screen: DeckCreate,
     navigationOptions: ({ navigation }) => ({
-      title: 'Create a Deck',
-      headerStyle: {
-        backgroundColor: white,
-        borderBottomWidth: 0,
-      },
+      header: null,
     })
   },
   DeckShow: {
