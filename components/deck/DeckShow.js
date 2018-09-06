@@ -40,6 +40,7 @@ class DeckShow extends Component {
           title="Delete Deck"
         />
         <Button
+          disabled={!_.size(questions) > 0}
           onPress={this.onPressStartQuiz}
           title="Start Quiz"
         />

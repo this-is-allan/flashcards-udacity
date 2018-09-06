@@ -63,7 +63,7 @@ const AppNavigator = createStackNavigator({
     screen: DeckShow,
     path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.title}'s Deck`,
+      title: `${navigation.state.params.title} Deck`,
       headerStyle: {
         backgroundColor: white,
         borderBottomWidth: 0,
