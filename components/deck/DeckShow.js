@@ -30,23 +30,28 @@ class DeckShow extends Component {
   }
 
   render() {
-    const { title, questions } = this.props.deck
+    const { questions } = this.props.deck
 
     return (
       <View style={styles.container}>
-        <Text style={styles.deckTitle}>{title} ({_.size(questions)})</Text>
+        <Text style={styles.deckTitle}>
+          {_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
+        </Text>
+
         <Button
           onPress={this.onPressDeleteDeck}
-          title="Delete Deck"
+          title="Delete deck"
         />
+
+        <Button
+          onPress={() => this.props.navigation.navigate('QuizCreate')}
+          title="Add quiz"
+        />
+
         <Button
           disabled={!_.size(questions) > 0}
           onPress={this.onPressStartQuiz}
-          title="Start Quiz"
-        />
-        <Button
-          onPress={() => this.props.navigation.navigate('QuizCreate')}
-          title="Add Quiz"
+          title="Start quiz"
         />
       </View>
     );
@@ -63,8 +68,11 @@ const styles = StyleSheet.create({
     marginLeft: 15
   },
   deckTitle: {
-    fontSize: 32,
     textAlign: 'center',
+    color: '#ED4C60',
+    fontSize: 32,
+    fontWeight: 'bold',
+    paddingBottom: 20,
   }
 });
 
