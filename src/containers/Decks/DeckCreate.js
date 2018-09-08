@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { newDeck, decksFetch } from '../../actions/decks';
-import { white } from '../../util/colors';
+import { white } from '../../config/colors';
 
 class DeckCreate extends Component {
   state = {

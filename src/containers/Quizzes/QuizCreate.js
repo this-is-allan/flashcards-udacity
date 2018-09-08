@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { newCard } from '../../actions/quiz';
 import { deckFetch } from '../../actions/decks';
-import { white } from '../../util/colors';
+import { white } from '../../config/colors';
 
 class QuizCreate extends Component {
   state = {

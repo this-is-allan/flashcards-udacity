@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch, decksFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
-import { white } from '../../util/colors';
+import { white } from '../../config/colors';
 
 class DeckShow extends Component {
   static navigationOptions = ({ navigation }) => ({

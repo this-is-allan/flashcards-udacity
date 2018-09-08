@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { decksFetch } from './../../actions/decks';
 
 import DeckListItem from './DeckListItem';
-import { white } from '../../util/colors';
+import { white } from '../../config/colors';
 
 class DeckList extends Component {
   componentDidMount() {

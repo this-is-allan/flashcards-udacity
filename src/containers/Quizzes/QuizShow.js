@@ -6,7 +6,7 @@ import { removeDeck, deckFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
 import { clearLocalNotification } from '../../util/notifications'
-import { white } from '../../util/colors';
+import { white } from '../../config/colors';
 
 class QuizShow extends Component {
 	state = {
