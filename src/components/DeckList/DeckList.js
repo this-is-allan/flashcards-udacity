@@ -35,11 +35,6 @@ class DeckList extends Component {
   render() {
     return (
       <View>
-        <View style={styles.header}>
-          <Text style={styles.title}>Welcome!</Text>
-          <Text style={styles.subtitle}>Memorize anything</Text>
-        </View>
-
         <FlatList
           data={Object.values(this.props.decks)}
           keyExtractor={this._keyExtractor}
