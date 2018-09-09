@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { connect } from 'react-redux';
+import TextInputField from '../../components/TextInputField'
+import PrimaryButton from '../../components/Buttons/Primary'
 import { newDeck, decksFetch } from '../../actions/decks';
 import { white } from '../../config/colors';
 
@@ -22,7 +24,6 @@ class DeckCreate extends Component {
   
       this.props.createDeck(newDeck, () => {
         this.props.fetchDecks()
-        this.setState({ name: '' })
         this.props.navigation.navigate('DeckShow', { title: entry.name })
       })
     } else {
@@ -35,7 +36,6 @@ class DeckCreate extends Component {
         { cancelable: false }
       )
     }
-    
   }
 
   render() {
@@ -43,17 +43,17 @@ class DeckCreate extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>Create a deck</Text>
 
-        <TextInput
-          style={styles.input}
-          onChangeText={name => this.setState({name})}
-          value={this.state.name}
-          placeholder='Type the deck name'
+        <TextInputField
+          fieldLabel="Enter a title for your new deck:"
+          placeholder="Deck title"
+          maxLength={30}
           autoFocus
+          onChangeText={name => this.setState({ name })}
         />
 
-        <Button
-          onPress={this.onPressCreateDeck}
+        <PrimaryButton
           title="Create Deck"
+          onPress={this.onPressCreateDeck}
         />
       </View>
     );

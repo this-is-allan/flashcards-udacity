@@ -11,6 +11,13 @@ import QuizCreate from '../containers/Quizzes/QuizCreate';
 import { dark, white, gray2 } from './colors'
 
 export const Tabs = createBottomTabNavigator({
+  CreateDeck: {
+    screen: DeckCreate,
+    navigationOptions: {
+      tabBarAccessibilityLabel: 'Create a Deck',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+    }
+  },
   DeckList: {
     screen: Home,
     navigationOptions: ({ navigation }) => ({
@@ -18,13 +25,6 @@ export const Tabs = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => <FontAwesome name='home' size={30} color={tintColor} />
     })
   },
-  CreateDeck: {
-    screen: DeckCreate,
-    navigationOptions: {
-      tabBarAccessibilityLabel: 'Create a Deck',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
-    }
-  }
 }, {
   tabBarOptions: {
     activeTintColor: dark,
