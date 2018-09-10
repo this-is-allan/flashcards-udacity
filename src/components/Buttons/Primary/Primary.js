@@ -1,14 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 const PrimaryButton = ({
   title,
-  onPress
+  onPress,
+  disabled
 }) => (
   <View>
     <Button
       onPress={onPress}
       title={title}
+      disabled={disabled}
     />
   </View>
 )

@@ -1,12 +1,14 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import PrimaryButton from '../../components/Buttons/Primary';
+import DeckShow from '../../components/DeckShow';
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch, decksFetch} from './../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 import { white } from '../../config/colors';
 
-class DeckShow extends Component {
+class DeckShowScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={styles.backButton} />,
   });
@@ -38,20 +40,12 @@ class DeckShow extends Component {
           {_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
         </Text>
 
-        <Button
-          onPress={this.onPressDeleteDeck}
-          title="Delete deck"
-        />
-
-        <Button
-          onPress={() => this.props.navigation.navigate('QuizCreate')}
-          title="Add quiz"
-        />
-
-        <Button
-          disabled={!_.size(questions) > 0}
-          onPress={this.onPressStartQuiz}
-          title="Start quiz"
+        <DeckShow
+          title={_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
+          deckEmpty={!_.size(questions) > 0}
+          navigation={this.props.navigation}
+          onPressDeleteDeck={this.onPressDeleteDeck}
+          onPressStartQuiz={this.onPressStartQuiz}
         />
       </View>
     );
@@ -90,4 +84,4 @@ mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckShow);
+export default connect(mapStateToProps, mapDispatchToProps)(DeckShowScreen);
