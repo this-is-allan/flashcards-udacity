@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import TextInputField from '../../components/TextInputField'
+import PrimaryButton from '../../components/Buttons/Primary'
 import { connect } from 'react-redux';
 import { newCard } from '../../actions/quiz';
 import { deckFetch } from '../../actions/decks';
@@ -28,23 +30,25 @@ class QuizCreate extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
+        <TextInputField
+          fieldLabel="Enter a question for your new card:"
           style={styles.input}
           onChangeText={question => this.setState({question})}
           value={this.state.question}
           placeholder='Type a question'
           autoFocus
           />
-        <TextInput
+        <TextInputField
+          fieldLabel="Enter an answer for your new card:"
           style={styles.input}
           onChangeText={answer => this.setState({answer})}
           value={this.state.answer}
           placeholder='Type a answer'
         />
 
-        <Button
-          onPress={this.onPressCreateQuestion}
+        <PrimaryButton
           title="Add Question"
+          onPress={this.onPressCreateQuestion}
         />
       </View>
     );
