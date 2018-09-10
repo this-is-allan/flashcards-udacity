@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
 import TextInputField from '../../components/TextInputField'
 import PrimaryButton from '../../components/Buttons/Primary'
 import { connect } from 'react-redux';
@@ -23,7 +23,14 @@ class QuizCreate extends Component {
           question: '',
           answer: ''
       })
-    //   this.props.navigation.navigate('DeckShow', { title: entry.name })
+      Alert.alert(
+        'Success!',
+        'The question was created successfully!',
+        [
+          {text: 'Ok'}
+        ],
+        { cancelable: false }
+      )
     })
   }
 
