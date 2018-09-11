@@ -17,21 +17,33 @@ class QuizCreate extends Component {
     let card = this.state
     const { title } = this.props.deck
 
-    this.props.addQuestion(card, title, () => {
-      this.props.deckFetch(title)
-      this.setState({
-          question: '',
-          answer: ''
-      })
+    if (card.question.length < 3 || card.answer.length < 3) {
       Alert.alert(
-        'Success!',
-        'The question was created successfully!',
+        'Quiz name empty',
+        'The quiz can\'t to be empty',
         [
           {text: 'Ok'}
         ],
         { cancelable: false }
       )
-    })
+    } else {
+      this.props.addQuestion(card, title, () => {
+        this.props.deckFetch(title)
+        this.setState({
+            question: '',
+            answer: ''
+        })
+        Alert.alert(
+          'Success!',
+          'The question was created successfully!',
+          [
+            {text: 'Ok'}
+          ],
+          { cancelable: false }
+        )
+      })
+    }
+
   }
 
   render() {
