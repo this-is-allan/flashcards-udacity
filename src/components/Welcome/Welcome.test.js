@@ -5,7 +5,7 @@ import Welcome from './'
 
 describe('Welcome', () => {
   it('renders correctly', () => {
-    const tree = create(<Welcome />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const tree = create(<Welcome />);
+    expect(tree.toJSON()).toMatchSnapshot();
   });
 })
