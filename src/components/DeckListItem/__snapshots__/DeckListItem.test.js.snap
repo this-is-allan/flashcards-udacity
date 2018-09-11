@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeckListItem renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Object {
+      "fontSize": 18,
+      "height": 44,
+      "padding": 10,
+    }
+  }
+>
+  React
+   (
+  2
+  )
+</Text>
+`;
