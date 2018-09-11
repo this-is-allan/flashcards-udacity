@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 
 const Welcome = () => (
-  <View style={styles.header}>
+  <View>
     <Text style={styles.title}>Welcome!</Text>
     <Text style={styles.subtitle}>Memorize anything</Text>
   </View>
