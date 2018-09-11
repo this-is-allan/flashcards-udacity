@@ -7,12 +7,17 @@ import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
 import { clearLocalNotification } from '../../util/notifications'
 import { white } from '../../config/colors';
+import QuizScore from '../../components/QuizScore/QuizScore';
+
+const CountSteps = ({currentQuestion, questionsLength}) => (
+	<Text style={styles.quizTrack}>{currentQuestion+1}/{questionsLength}</Text>
+)
 
 class QuizShow extends Component {
 	state = {
 		currentQuestion: 0,
 		questionsLength: 0,
-		correctQuestions: 0,
+		score: 0,
 		showAnswer: false,
 		cardFlipped: false,
 	}
@@ -24,7 +29,7 @@ class QuizShow extends Component {
 	
 	
 	onPressNext = (correct) => {
-		correct && this.setState({ correctQuestions: this.state.correctQuestions + 10 })
+		correct && this.setState({ score: this.state.score + 10 })
 
 		if (this.state.cardFlipped === true) {
 			this.card.flip()
@@ -36,7 +41,6 @@ class QuizShow extends Component {
 				currentQuestion: ++this.state.currentQuestion,
 			})
 		}, 200);
-		
 	}
 	
 	render() {
@@ -44,22 +48,19 @@ class QuizShow extends Component {
 		let {
 			currentQuestion,
 			questionsLength,
-			correctQuestions,
+			score,
 			showAnswer,
 		} = this.state
 
 		if (currentQuestion === questionsLength) {
 			return (
-				<View>
-					<Text>Terminou</Text>
-					<Text>Pontos: {correctQuestions}</Text>
-				</View>
+				<QuizScore score={score} />
 			)
 		}
 
 		return (
 			<View style={styles.container}>
-				<Text style={styles.quizTrack}>{currentQuestion+1}/{questionsLength}</Text>
+				<CountSteps currentQuestion={currentQuestion} questionsLength={questionsLength} />
 
 				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={styles.cardContainer} ref={(card) => this.card = card} >
 					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text style={styles.cardText}>{questions[currentQuestion].question}</Text></TouchableOpacity>
