@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome renders correctly 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ED4E5F",
+        "fontSize": 32,
+        "fontWeight": "bold",
+        "paddingBottom": 10,
+      }
+    }
+  >
+    Welcome!
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ED4E5F",
+        "fontSize": 20,
+        "paddingBottom": 10,
+      }
+    }
+  >
+    Memorize anything
+  </Text>
+</View>
+`;
