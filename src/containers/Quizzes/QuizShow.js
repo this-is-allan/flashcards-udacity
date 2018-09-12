@@ -29,7 +29,7 @@ class QuizShow extends Component {
 	
 	
 	onPressNext = (correct) => {
-		correct && this.setState({ score: this.state.score + 10 })
+		correct && this.setState({ score: this.state.score + 1 })
 
 		if (this.state.cardFlipped === true) {
 			this.card.flip()
@@ -54,7 +54,9 @@ class QuizShow extends Component {
 
 		if (currentQuestion === questionsLength) {
 			return (
-				<QuizScore score={score} />
+				<View style={styles.container}>
+					<QuizScore score={score} questionsLength={questionsLength} />
+				</View>
 			)
 		}
 
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
 	},
   cardContainer:{
     width: 320,

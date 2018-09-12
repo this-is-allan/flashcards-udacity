@@ -6,6 +6,13 @@ exports[`QuizScore renders correctly 1`] = `
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#ED4E5F",
+        "fontSize": 35,
+        "fontWeight": "bold",
+      }
+    }
   >
     Finished!
   </Text>
@@ -13,9 +20,15 @@ exports[`QuizScore renders correctly 1`] = `
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
+    style={
+      Object {
+        "fontSize": 24,
+        "textAlign": "center",
+      }
+    }
   >
-    Score: 
     40
+     correct questions from 
   </Text>
 </View>
 `;
