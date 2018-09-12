@@ -13,11 +13,16 @@ class QuizCreate extends Component {
     answer: ''
   }
 
+  emptyForm = () => {
+    let { question, answer } = this.state;
+    return question.length <= 2 || answer.length <= 2 ? true : false;
+  }
+
   onPressCreateQuestion = () => {
     let card = this.state
     const { title } = this.props.deck
 
-    if (card.question.length < 3 || card.answer.length < 3) {
+    if (this.emptyForm()) {
       Alert.alert(
         'Quiz name empty',
         'The quiz can\'t to be empty',
@@ -56,7 +61,8 @@ class QuizCreate extends Component {
           value={this.state.question}
           placeholder='Type a question'
           autoFocus
-          />
+        />
+
         <TextInputField
           fieldLabel="Enter an answer for your new card:"
           style={styles.input}
@@ -68,6 +74,7 @@ class QuizCreate extends Component {
         <PrimaryButton
           title="Add Question"
           onPress={this.onPressCreateQuestion}
+          disabled={this.emptyForm()}
         />
       </View>
     );
