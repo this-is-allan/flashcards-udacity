@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
   Text,
+  Image,
   FlatList,
   TouchableOpacity
 } from 'react-native';
@@ -10,7 +12,6 @@ import { connect } from "react-redux";
 import { decksFetch } from './../../actions/decks';
 
 import DeckListItem from '../../components/DeckListItem';
-import { white } from '../../config/colors';
 
 class DeckList extends Component {
   componentDidMount() {
@@ -33,6 +34,13 @@ class DeckList extends Component {
   )
 
   render() {
+    if (_.isEmpty(this.props.decks)) {
+      return (
+        <View style={styles.centerContent}>
+          <Image source={require('../../images/empty-box.png')} style={{ width: 100, height: 100 }} />
+        </View>
+      )
+    }
     return (
       <View>
         <FlatList
@@ -56,6 +64,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#ED4E5F',
     paddingBottom: 10,
+  },
+  centerContent: {
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
 
