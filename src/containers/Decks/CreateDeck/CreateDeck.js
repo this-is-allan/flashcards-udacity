@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import TextInputField from '../../components/TextInputField'
-import PrimaryButton from '../../components/Buttons/Primary'
-import { newDeck, decksFetch } from '../../actions/decks';
-import { white } from '../../config/colors';
+import TextInputField from '../../../components/TextInputField'
+import PrimaryButton from '../../../components/Buttons/Primary'
+import { newDeck, decksFetch } from '../../../actions/decks';
+import { white } from '../../../config/colors';
 
-class DeckCreate extends Component {
+class CreateDeck extends Component {
   state = {
     name: ''
   }
@@ -83,4 +83,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(DeckCreate)
+export default connect(null, mapDispatchToProps)(CreateDeck)

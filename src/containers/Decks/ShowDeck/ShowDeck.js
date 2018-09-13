@@ -1,14 +1,13 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import PrimaryButton from '../../components/Buttons/Primary';
-import DeckShow from '../../components/DeckShow';
+import DeckShow from '../../../components/DeckShow';
 import { connect } from 'react-redux';
-import { removeDeck, deckFetch, decksFetch} from './../../actions/decks'
+import { removeDeck, deckFetch, decksFetch} from '../../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
-import { white } from '../../config/colors';
+import { white } from '../../../config/colors';
 
-class DeckShowScreen extends Component {
+class ShowDeckScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={styles.backButton} />,
   });
@@ -84,4 +83,4 @@ mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckShowScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowDeckScreen);

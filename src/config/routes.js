@@ -3,10 +3,10 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import { FontAwesome } from '@expo/vector-icons';
 
 import Home from '../containers/Home/Home';
-import DeckShowScreen from '../containers/Decks/DeckShow';
-import DeckCreate from '../containers/Decks/DeckCreate';
-import QuizShow from '../containers/Quizzes/QuizShow';
-import QuizCreate from '../containers/Quizzes/QuizCreate';
+import ShowDeckScreen from '../containers/Decks/ShowDeck';
+import CreateDeck from '../containers/Decks/CreateDeck';
+import ShowQuiz from '../containers/Quizzes/ShowQuiz';
+import CreateQuiz from '../containers/Quizzes/CreateQuiz';
 
 import { dark, white, gray2 } from './colors'
 
@@ -19,7 +19,7 @@ export const Tabs = createBottomTabNavigator({
     })
   },
   CreateDeck: {
-    screen: DeckCreate,
+    screen: CreateDeck,
     navigationOptions: {
       tabBarAccessibilityLabel: 'Create a Deck',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
@@ -46,7 +46,7 @@ export const MainNavigator = createStackNavigator({
     })
   },
   DeckShow: {
-    screen: DeckShowScreen,
+    screen: ShowDeckScreen,
     path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
       title: `${navigation.state.params.title} Deck`,
@@ -57,7 +57,7 @@ export const MainNavigator = createStackNavigator({
     })
   },
   Quiz: {
-    screen: QuizShow,
+    screen: ShowQuiz,
     path: 'decks/:name',
     navigationOptions: ({ navigation }) => ({
       title: 'Quiz',
@@ -67,8 +67,8 @@ export const MainNavigator = createStackNavigator({
       }
     })
   },
-  QuizCreate: {
-    screen: QuizCreate,
+  CreateQuiz: {
+    screen: CreateQuiz,
     navigationOptions: ({ navigation }) => ({
       title: 'Create Question',
       headerStyle: {

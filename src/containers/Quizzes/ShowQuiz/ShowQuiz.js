@@ -2,18 +2,18 @@ import _ from 'lodash'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { removeDeck, deckFetch} from './../../actions/decks'
+import { removeDeck, deckFetch} from '../../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
-import { clearLocalNotification } from '../../util/notifications'
-import { white } from '../../config/colors';
-import QuizScore from '../../components/QuizScore/QuizScore';
+import { clearLocalNotification } from '../../../util/notifications'
+import { white } from '../../../config/colors';
+import QuizScore from '../../../components/QuizScore/QuizScore';
 
 const CountSteps = ({currentQuestion, questionsLength}) => (
 	<Text style={styles.quizTrack}>{currentQuestion+1}/{questionsLength}</Text>
 )
 
-class QuizShow extends Component {
+class ShowQuiz extends Component {
 	state = {
 		currentQuestion: 0,
 		questionsLength: 0,
@@ -138,4 +138,4 @@ mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizShow);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowQuiz);

@@ -7,12 +7,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { connect } from "react-redux";
-import { decksFetch } from './../../actions/decks';
+import { decksFetch } from './../../../actions/decks';
 
-import DeckListItem from '../../components/DeckListItem';
-import { white } from '../../config/colors';
+import DeckListItem from '../../../components/DeckListItem';
 
-class DeckList extends Component {
+class ListDeck extends Component {
   componentDidMount() {
     this.props.fetchDecks()
   }
@@ -76,4 +75,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckList)
+export default connect(mapStateToProps, mapDispatchToProps)(ListDeck)

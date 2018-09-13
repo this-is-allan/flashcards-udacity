@@ -17,7 +17,7 @@ const DeckShow = ({
 
     <PrimaryButton
       title="Add quiz"
-      onPress={() => navigation.navigate('QuizCreate')}
+      onPress={() => navigation.navigate('CreateQuiz')}
     />
 
     <PrimaryButton

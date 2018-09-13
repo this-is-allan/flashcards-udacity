@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
-import TextInputField from '../../components/TextInputField'
-import PrimaryButton from '../../components/Buttons/Primary'
+import { StyleSheet, View, Alert } from 'react-native';
+import TextInputField from '../../../components/TextInputField'
+import PrimaryButton from '../../../components/Buttons/Primary'
 import { connect } from 'react-redux';
-import { newCard } from '../../actions/quiz';
-import { deckFetch } from '../../actions/decks';
-import { white } from '../../config/colors';
+import { newCard } from '../../../actions/quiz';
+import { deckFetch } from '../../../actions/decks';
+import { white } from '../../../config/colors';
 
-class QuizCreate extends Component {
+class CreateQuiz extends Component {
   state = {
     question: '',
     answer: ''
@@ -105,4 +105,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizCreate)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateQuiz)
