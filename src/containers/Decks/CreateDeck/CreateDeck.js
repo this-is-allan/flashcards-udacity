@@ -1,5 +1,6 @@
+import { isEmpty } from 'lodash';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import TextInputField from '../../../components/TextInputField'
 import PrimaryButton from '../../../components/Buttons/Primary'
@@ -9,6 +10,11 @@ import { white } from '../../../config/colors';
 class CreateDeck extends Component {
   state = {
     name: ''
+  }
+
+  verifyFormFill = () => {
+    let { name } = this.state;
+    return isEmpty(name);
   }
 
   onPressCreateDeck = () => {
@@ -26,15 +32,6 @@ class CreateDeck extends Component {
         this.props.fetchDecks()
         this.props.navigation.navigate('DeckShow', { title: entry.name })
       })
-    } else {
-      Alert.alert(
-        'Deck name empty',
-        'The deck name can\'t to be empty',
-        [
-          {text: 'Ok'}
-        ],
-        { cancelable: false }
-      )
     }
   }
 
@@ -54,6 +51,7 @@ class CreateDeck extends Component {
         <PrimaryButton
           title="Create Deck"
           onPress={this.onPressCreateDeck}
+          disabled={this.verifyFormFill()}
         />
       </View>
     );

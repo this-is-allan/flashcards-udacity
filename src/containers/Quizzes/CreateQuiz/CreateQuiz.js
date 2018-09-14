@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import React, { Component } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
 import TextInputField from '../../../components/TextInputField'
@@ -13,42 +14,30 @@ class CreateQuiz extends Component {
     answer: ''
   }
 
-  emptyForm = () => {
+  verifyFormFill = () => {
     let { question, answer } = this.state;
-    return question.length <= 2 || answer.length <= 2 ? true : false;
+    return isEmpty(question) || isEmpty(answer);
   }
 
   onPressCreateQuestion = () => {
     let card = this.state
     const { title } = this.props.deck
 
-    if (this.emptyForm()) {
+    this.props.addQuestion(card, title, () => {
+      this.props.deckFetch(title)
+      this.setState({
+          question: '',
+          answer: ''
+      })
       Alert.alert(
-        'Quiz name empty',
-        'The quiz can\'t to be empty',
+        'Success!',
+        'The question was created successfully!',
         [
           {text: 'Ok'}
         ],
         { cancelable: false }
       )
-    } else {
-      this.props.addQuestion(card, title, () => {
-        this.props.deckFetch(title)
-        this.setState({
-            question: '',
-            answer: ''
-        })
-        Alert.alert(
-          'Success!',
-          'The question was created successfully!',
-          [
-            {text: 'Ok'}
-          ],
-          { cancelable: false }
-        )
-      })
-    }
-
+    })
   }
 
   render() {
@@ -74,7 +63,7 @@ class CreateQuiz extends Component {
         <PrimaryButton
           title="Add Question"
           onPress={this.onPressCreateQuestion}
-          disabled={this.emptyForm()}
+          disabled={this.verifyFormFill()}
         />
       </View>
     );
