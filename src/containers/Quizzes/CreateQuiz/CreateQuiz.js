@@ -41,13 +41,14 @@ class CreateQuiz extends Component {
   }
 
   render() {
+    let { question, answer } = this.state;
     return (
       <View style={styles.container}>
         <TextInputField
           fieldLabel="Enter a question for your new card:"
           style={styles.input}
           onChangeText={question => this.setState({question})}
-          value={this.state.question}
+          value={question}
           placeholder='Type a question'
           autoFocus
         />
@@ -56,7 +57,7 @@ class CreateQuiz extends Component {
           fieldLabel="Enter an answer for your new card:"
           style={styles.input}
           onChangeText={answer => this.setState({answer})}
-          value={this.state.answer}
+          value={answer}
           placeholder='Type a answer'
         />
 
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ deck }) => {
     return {
-        deck: deck.deck
+      deck: deck.deck
     }
 }
 

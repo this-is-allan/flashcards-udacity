@@ -6,6 +6,7 @@ const TextInputField = ({
   maxLength,
   placeholder,
   autoFocus,
+  value,
   onChangeText,
 }) => (
   <View>
@@ -18,7 +19,9 @@ const TextInputField = ({
       autoCorrect={false}
       autoFocus={autoFocus}
       keyboardType="default"
+      value={value}
       onChangeText={onChangeText}
+      underlineColorAndroid="transparent"
       clearButtonMode="always"
     />
   </View>
