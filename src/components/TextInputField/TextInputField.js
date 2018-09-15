@@ -19,6 +19,7 @@ const TextInputField = ({
       autoFocus={autoFocus}
       keyboardType="default"
       onChangeText={onChangeText}
+      clearButtonMode="always"
     />
   </View>
 )
