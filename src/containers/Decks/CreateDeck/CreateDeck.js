@@ -20,22 +20,23 @@ class CreateDeck extends Component {
   onPressCreateDeck = () => {
     const entry = this.state
 
-    if (entry.name !== '') {
-      const newDeck = {
-        [entry.name]: {
-          title: entry.name,
-          questions: []
-        }
+    const newDeck = {
+      [entry.name]: {
+        title: entry.name,
+        questions: []
       }
-  
-      this.props.createDeck(newDeck, () => {
-        this.props.fetchDecks()
-        this.props.navigation.navigate('DeckShow', { title: entry.name })
-      })
     }
+
+    this.props.createDeck(newDeck, () => {
+      this.setState({ name: '' })
+      this.props.fetchDecks()
+      this.props.navigation.navigate('DeckShow', { title: entry.name })
+    })
   }
 
   render() {
+    let { name }  = this.state
+    
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Create a deck</Text>
@@ -44,6 +45,7 @@ class CreateDeck extends Component {
           fieldLabel="Enter a title for your new deck:"
           placeholder="Deck title"
           maxLength={30}
+          value={name}
           autoFocus
           onChangeText={name => this.setState({ name })}
         />
