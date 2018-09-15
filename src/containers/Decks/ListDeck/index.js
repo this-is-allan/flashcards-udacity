@@ -1,3 +1,3 @@
-import ListDeck from './'
+import ListDeck from './ListDeck';
 
-export default ListDeck
+export default ListDeck;

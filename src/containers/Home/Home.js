@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DeckList from '../../components/DeckList'
+
+import ListDeck from '../../containers/Decks/ListDeck'
 import Welcome from '../../components/Welcome';
 
 export default class HomeScreen extends Component {
@@ -8,7 +9,7 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <Welcome />
-        <DeckList navigation={this.props.navigation} />
+        <ListDeck navigation={this.props.navigation} />
       </View>
     );
   }

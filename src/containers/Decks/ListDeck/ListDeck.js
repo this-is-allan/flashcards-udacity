@@ -9,8 +9,6 @@ import {
 import { connect } from "react-redux";
 import { decksFetch } from './../../../actions/decks';
 
-import DeckListItem from '../../../components/DeckListItem';
-
 class ListDeck extends Component {
   componentDidMount() {
     this.props.fetchDecks()
@@ -18,27 +16,16 @@ class ListDeck extends Component {
 
   _keyExtractor = (item, index) => index.toString()
 
-  _renderItem = ({item}) => (
-    <View>
-      <TouchableOpacity onPress={() =>
-        this.props.navigation.navigate('DeckShow', item)}>
-        <DeckListItem
-          id={item.id}
-          title={item.title}
-          length={item.questions.length}
-        />
-      </TouchableOpacity>
-    </View>
+  _renderItem = ({ item }) => (
+    <TouchableOpacity onPress={() =>
+      this.props.navigation.navigate('DeckShow', item)}>
+      <Text style={styles.listItem}>{item.title} ({item.questions.length})</Text>
+    </TouchableOpacity>
   )
 
   render() {
     return (
       <View>
-        <View style={styles.header}>
-          <Text style={styles.title}>Welcome!</Text>
-          <Text style={styles.subtitle}>Memorize anything</Text>
-        </View>
-
         <FlatList
           data={Object.values(this.props.decks)}
           keyExtractor={this._keyExtractor}
@@ -60,7 +47,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#ED4E5F',
     paddingBottom: 10,
-  }
+  },
+  listItem: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 18,
+    height: 44,
+  },
 });
 
 const mapStateToProps = ({ decks }) => {
