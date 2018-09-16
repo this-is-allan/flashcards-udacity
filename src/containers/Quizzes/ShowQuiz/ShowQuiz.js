@@ -1,16 +1,15 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { removeDeck, deckFetch} from '../../../actions/decks'
-import { Ionicons } from '@expo/vector-icons';
 import CardFlip from 'react-native-card-flip';
 import { clearLocalNotification } from '../../../util/notifications'
-import { white } from '../../../config/colors';
 import QuizScore from '../../../components/QuizScore/QuizScore';
+import PrimaryButton from '../../../components/Buttons/Primary'
 
 const CountSteps = ({currentQuestion, questionsLength}) => (
-	<Text style={styles.quizTrack}>{currentQuestion+1}/{questionsLength}</Text>
+	<QuizTrack>{currentQuestion+1}/{questionsLength}</QuizTrack>
 )
 
 class ShowQuiz extends Component {
@@ -24,7 +23,7 @@ class ShowQuiz extends Component {
 
 	componentDidMount = () => {
 		this.setState({ questionsLength: this.props.deck.questions.length})
-		// clearLocalNotification()
+		clearLocalNotification()
 	};
 	
 	
@@ -54,76 +53,62 @@ class ShowQuiz extends Component {
 
 		if (currentQuestion === questionsLength) {
 			return (
-				<View style={styles.container}>
+				<Container>
 					<QuizScore score={score} questionsLength={questionsLength} />
-				</View>
+				</Container>
 			)
 		}
 
 		return (
-			<View style={styles.container}>
+			<Container>
 				<CountSteps currentQuestion={currentQuestion} questionsLength={questionsLength} />
 
-				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={styles.cardContainer} ref={(card) => this.card = card} >
-					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}} ><Text style={styles.cardText}>{questions[currentQuestion].question}</Text></TouchableOpacity>
-					<TouchableOpacity style={styles.card} onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}} ><Text style={styles.cardText}>{questions[currentQuestion].answer}</Text></TouchableOpacity>
+				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={{width: 320, height: 470}} ref={(card) => this.card = card} >
+					<CardFace onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}}><CardContent>{questions[currentQuestion].question}</CardContent></CardFace>
+					<CardFace onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}}><CardContent>{questions[currentQuestion].answer}</CardContent></CardFace>
 				</CardFlip>
 
-				<Button disabled={!showAnswer} title='Correct' color='green' onPress={() => this.onPressNext(true)} />
-				<Button disabled={!showAnswer} title='Incorrect' color='red' onPress={() => this.onPressNext(false)} />
-			</View>
+				<PrimaryButton
+					title="Correct"
+					onPress={() => this.onPressNext(true)}
+					disabled={!showAnswer}
+				/>
+
+				<PrimaryButton
+					title="Incorrect"
+					onPress={() => this.onPressNext(false)}
+					disabled={!showAnswer}
+				/>
+			</Container>
 		)
 	}
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-	},
-  cardContainer:{
-    width: 320,
-		height: 470,
-  },
-  card:{
-		display: 'flex',
-		justifyContent: 'center',
-    width: 320,
-		height: 470,
-		padding: 30,
-    backgroundColor: white,
-    borderRadius: 5,
-		shadowColor: 'rgba(0,0,0,.15)',
-    shadowOffset: {
-      width: 1,
-      height: 3
-    },
-    shadowOpacity:0.5,
-	},
-	cardText: {
-		fontSize: 18,
-		textAlign: 'center',
-	},
-  card1: {
-    backgroundColor: '#FE474C',
-  },
-  card2: {
-    backgroundColor: '#FEB12C',
-  },
-  label: {
-    lineHeight: 470,
-    textAlign: 'center',
-    fontSize: 55,
-    fontFamily: 'System',
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-	},
-	quizTrack: {
-		color: '#7f8fa6',
-	}
-});
+const QuizTrack = styled.Text `
+	color: #7f8fa6;
+`
+
+const Container = styled.View `
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+`
+const CardFace = styled.TouchableOpacity `
+	display: flex;
+	justify-content: center;
+	width: 320px;
+	height: 470px;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 1px 3px rgba(0,0,0,.15);
+`
+
+const CardContent = styled.Text `
+	font-size: 18px;
+	text-align: center;
+`
 
 mapStateToProps = ({deck}) => {
   return {
