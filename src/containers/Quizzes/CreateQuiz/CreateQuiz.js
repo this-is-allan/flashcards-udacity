@@ -1,12 +1,12 @@
 import { isEmpty } from 'lodash';
 import React, { Component } from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { Sector } from '../../../config/theme'
+import { Alert } from 'react-native';
 import TextInputField from '../../../components/TextInputField'
 import PrimaryButton from '../../../components/Buttons/Primary'
 import { connect } from 'react-redux';
 import { newCard } from '../../../actions/quiz';
 import { deckFetch } from '../../../actions/decks';
-import { white } from '../../../config/colors';
 
 class CreateQuiz extends Component {
   state = {
@@ -43,10 +43,9 @@ class CreateQuiz extends Component {
   render() {
     let { question, answer } = this.state;
     return (
-      <View style={styles.container}>
+      <Sector>
         <TextInputField
-          fieldLabel="Enter a question for your new card:"
-          style={styles.input}
+          label="Enter a question for your new card:"
           onChangeText={question => this.setState({question})}
           value={question}
           placeholder='Type a question'
@@ -54,8 +53,7 @@ class CreateQuiz extends Component {
         />
 
         <TextInputField
-          fieldLabel="Enter an answer for your new card:"
-          style={styles.input}
+          label="Enter an answer for your new card:"
           onChangeText={answer => this.setState({answer})}
           value={answer}
           placeholder='Type a answer'
@@ -66,26 +64,15 @@ class CreateQuiz extends Component {
           onPress={this.onPressCreateQuestion}
           disabled={this.verifyFormFill()}
         />
-      </View>
+      </Sector>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: white,
-  },
-  input: {
-    height: 50,
-  }
-});
-
 const mapStateToProps = ({ deck }) => {
-    return {
-      deck: deck.deck
-    }
+  return {
+    deck: deck.deck
+  }
 }
 
 const mapDispatchToProps = dispatch => {

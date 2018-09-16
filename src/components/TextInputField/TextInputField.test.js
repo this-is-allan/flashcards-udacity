@@ -9,7 +9,7 @@ describe('TextInputField', () => {
     <TextInputField
     placeholder="something"
     maxLength={30}
-    fieldLabel="Enter something"
+    label="Enter something"
     onChangeText={onChangeText}
     />
   );

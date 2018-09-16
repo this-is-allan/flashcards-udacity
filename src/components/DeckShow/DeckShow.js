@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import PrimaryButton from '../Buttons/Primary';
 
 const DeckShow = ({
@@ -9,7 +9,7 @@ const DeckShow = ({
   onPressStartQuiz,
   navigation
 }) => (
-  <View style={styles.container}>
+  <View>
     <PrimaryButton
       title="Delete deck"
       onPress={() => onPressDeleteDeck()}
@@ -27,14 +27,6 @@ const DeckShow = ({
     />
   </View>
 )
-
-const styles = StyleSheet.create({
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-});
 
 DeckShow.propTypes = {
   deckEmpty: PropTypes.bool.isRequired,

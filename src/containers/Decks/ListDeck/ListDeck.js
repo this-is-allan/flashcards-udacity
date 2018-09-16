@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import {
-  StyleSheet,
-  View,
-  Text,
   FlatList,
   TouchableOpacity
 } from 'react-native';
 import { connect } from "react-redux";
 import { decksFetch } from './../../../actions/decks';
+
+const ListDeckItem = styled.Text `
+  paddingTop: 10px;
+  paddingBottom: 10px;
+  fontSize: 18px;
+  height: 44px;
+`;
 
 class ListDeck extends Component {
   componentDidMount() {
@@ -19,42 +24,22 @@ class ListDeck extends Component {
   _renderItem = ({ item }) => (
     <TouchableOpacity onPress={() =>
       this.props.navigation.navigate('DeckShow', item)}>
-      <Text style={styles.listItem}>{item.title} ({item.questions.length})</Text>
+      <ListDeckItem>
+        {item.title} ({item.questions.length})
+      </ListDeckItem>
     </TouchableOpacity>
   )
 
   render() {
     return (
-      <View>
-        <FlatList
-          data={Object.values(this.props.decks)}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-        />
-      </View>
+      <FlatList
+        data={Object.values(this.props.decks)}
+        keyExtractor={this._keyExtractor}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    color: '#ED4E5F',
-    fontWeight: 'bold',
-    paddingBottom: 10,
-  },
-  subtitle: {
-    fontSize: 20,
-    color: '#ED4E5F',
-    paddingBottom: 10,
-  },
-  listItem: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 18,
-    height: 44,
-  },
-});
 
 const mapStateToProps = ({ decks }) => {
   return {

@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
+import { Sector} from '../../config/theme';
 
+import Header from '../../components/Header';
 import ListDeck from '../../containers/Decks/ListDeck'
-import Welcome from '../../components/Welcome';
 
 export default class HomeScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Welcome />
+      <Sector>
+        <Header title="Welcome" subtitle="Memorize anything" />
+
         <ListDeck navigation={this.props.navigation} />
-      </View>
+      </Sector>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff'
-  },
-});

@@ -1,15 +1,19 @@
 import _ from 'lodash'
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import DeckShow from '../../../components/DeckShow';
+import { Sector} from '../../../config/theme';
+
 import { connect } from 'react-redux';
-import { removeDeck, deckFetch, decksFetch} from '../../../actions/decks'
 import { Ionicons } from '@expo/vector-icons';
+
+import DeckShow from '../../../components/DeckShow';
+import Header from '../../../components/Header';
+
 import { white } from '../../../config/colors';
+import { removeDeck, deckFetch, decksFetch} from '../../../actions/decks'
 
 class ShowDeckScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={styles.backButton} />,
+    headerLeft: <Ionicons name='ios-arrow-back' size={30} onPress={() => navigation.navigate('DeckList')} style={{ marginLeft: 15 }} />,
   });
 
   componentDidMount = () => {
@@ -34,11 +38,11 @@ class ShowDeckScreen extends Component {
     const { questions } = this.props.deck
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.deckTitle}>
-          {_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
-        </Text>
-
+      <Sector>
+        <Header
+          title={_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
+        />
+    
         <DeckShow
           title={_.size(questions) > 0 ? `${_.size(questions)} cards` : 'No card'}
           deckEmpty={!_.size(questions) > 0}
@@ -46,28 +50,10 @@ class ShowDeckScreen extends Component {
           onPressDeleteDeck={this.onPressDeleteDeck}
           onPressStartQuiz={this.onPressStartQuiz}
         />
-      </View>
+      </Sector>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: white
-  },
-  backButton: {
-    marginLeft: 15
-  },
-  deckTitle: {
-    textAlign: 'center',
-    color: '#ED4C60',
-    fontSize: 32,
-    fontWeight: 'bold',
-    paddingBottom: 20,
-  }
-});
 
 mapStateToProps = ({deck}) => {
   return {

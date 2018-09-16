@@ -1,7 +1,9 @@
 import { isEmpty } from 'lodash';
+import { Sector } from '../../../config/theme'
+
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import Header from '../../../components/Header';
 import TextInputField from '../../../components/TextInputField'
 import PrimaryButton from '../../../components/Buttons/Primary'
 import { newDeck, decksFetch } from '../../../actions/decks';
@@ -38,11 +40,11 @@ class CreateDeck extends Component {
     let { name }  = this.state
     
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Create a deck</Text>
+      <Sector>
+        <Header title="Create a Deck" />
 
         <TextInputField
-          fieldLabel="Enter a title for your new deck:"
+          label="Enter a title for your new deck:"
           placeholder="Deck title"
           maxLength={30}
           value={name}
@@ -55,26 +57,10 @@ class CreateDeck extends Component {
           onPress={this.onPressCreateDeck}
           disabled={this.verifyFormFill()}
         />
-      </View>
+      </Sector>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: white
-  },
-  input: {
-    height: 50,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    paddingBottom: 20,
-  }
-});
 
 const mapDispatchToProps = dispatch => {
   return {

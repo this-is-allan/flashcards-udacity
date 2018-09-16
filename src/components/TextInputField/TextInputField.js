@@ -1,8 +1,15 @@
 import React from 'react';
-import { Text, View, TextInput } from 'react-native';
+import styled from 'styled-components/native'
+import { View } from 'react-native';
+
+const Label = styled.Text ``;
+
+const Input = styled.TextInput `
+  height: 40;
+`
 
 const TextInputField = ({
-  fieldLabel,
+  label,
   maxLength,
   placeholder,
   autoFocus,
@@ -10,9 +17,8 @@ const TextInputField = ({
   onChangeText,
 }) => (
   <View>
-    <Text>{fieldLabel}</Text>
-    <TextInput
-      style={{ height: 40 }}
+    <Label>{label}</Label>
+    <Input
       placeholder={placeholder}
       maxLength={maxLength}
       selectionColor = '#ED4E5F'
