@@ -6,6 +6,12 @@ exports[`TextInputField renders correctly 1`] = `
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
   >
     Enter something
   </Text>
@@ -13,16 +19,22 @@ exports[`TextInputField renders correctly 1`] = `
     allowFontScaling={true}
     autoCorrect={false}
     autoFocus={undefined}
+    clearButtonMode="always"
     keyboardType="default"
     maxLength={30}
     onChangeText={[MockFunction]}
     placeholder="something"
     selectionColor="#ED4E5F"
     style={
-      Object {
-        "height": 40,
-      }
+      Array [
+        Object {
+          "height": 40,
+        },
+        undefined,
+      ]
     }
+    underlineColorAndroid="transparent"
+    value={undefined}
   />
 </View>
 `;
