@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizScore renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ed4e5f",
+          "fontSize": 32,
+          "fontWeight": "bold",
+          "paddingBottom": 10,
+        },
+        undefined,
+      ]
+    }
+  >
+    Finished
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ed4e5f",
+          "fontSize": 20,
+          "paddingBottom": 10,
+        },
+        undefined,
+      ]
+    }
+  >
+    40 correct questions from undefined
+  </Text>
+</View>
+`;

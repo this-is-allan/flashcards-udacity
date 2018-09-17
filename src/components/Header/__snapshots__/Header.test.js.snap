@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ed4e5f",
+          "fontSize": 32,
+          "fontWeight": "bold",
+          "paddingBottom": 10,
+        },
+        undefined,
+      ]
+    }
+  >
+    asdisd
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#ed4e5f",
+          "fontSize": 20,
+          "paddingBottom": 10,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

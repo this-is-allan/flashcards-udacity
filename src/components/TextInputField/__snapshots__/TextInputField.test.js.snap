@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInputField renders correctly 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    Enter something
+  </Text>
+  <TextInput
+    allowFontScaling={true}
+    autoCorrect={false}
+    autoFocus={undefined}
+    clearButtonMode="always"
+    keyboardType="default"
+    maxLength={30}
+    onChangeText={[MockFunction]}
+    placeholder="something"
+    selectionColor="#ED4E5F"
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+        undefined,
+      ]
+    }
+    underlineColorAndroid="transparent"
+    value={undefined}
+  />
+</View>
+`;
