@@ -11,19 +11,19 @@ import CreateQuiz from '../containers/Quizzes/CreateQuiz';
 import { dark, white, gray2 } from './colors'
 
 export const Tabs = createBottomTabNavigator({
-  DeckList: {
-    screen: Home,
-    navigationOptions: ({ navigation }) => ({
-      tabBarAccessibilityLabel: 'All Decks',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name='home' size={30} color={tintColor} />
-    })
-  },
   CreateDeck: {
     screen: CreateDeck,
     navigationOptions: {
       tabBarAccessibilityLabel: 'Create a Deck',
       tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
     }
+  },
+  DeckList: {
+    screen: Home,
+    navigationOptions: ({ navigation }) => ({
+      tabBarAccessibilityLabel: 'All Decks',
+      tabBarIcon: ({ tintColor }) => <FontAwesome name='home' size={30} color={tintColor} />
+    })
   },
 }, {
   tabBarOptions: {

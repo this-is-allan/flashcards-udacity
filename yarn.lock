@@ -5554,6 +5554,10 @@ react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
 
+react-native-buttonex@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-buttonex/-/react-native-buttonex-2.0.8.tgz#f42885e761d219ddf79126a5eae8aae67a8f13c6"
+
 react-native-card-flip@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-native-card-flip/-/react-native-card-flip-1.0.3.tgz#402f292203747e6e6925d502de165e4a0b51160a"
@@ -5575,6 +5579,10 @@ react-native-drawer-layout@1.3.2:
   resolved "https://registry.yarnpkg.com/react-native-drawer-layout/-/react-native-drawer-layout-1.3.2.tgz#b9740d7663a1dc4f88a61b9c6d93d2d948ea426e"
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
+
+react-native-flat-button@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-flat-button/-/react-native-flat-button-1.0.6.tgz#97795fea1544b3a6e0964cec4e1c545ecb881eb2"
 
 react-native-gesture-handler@1.0.0-alpha.41:
   version "1.0.0-alpha.41"

@@ -1,32 +1,27 @@
-import React from 'react'
-import { StyleSheet, View, Button } from 'react-native';
+import React from 'react';
+import styled from 'styled-components/native';
+import Button from 'react-native-buttonex'
+
 
 const PrimaryButton = ({
   title,
   onPress,
   disabled
 }) => (
-  <View>
+  <Container>
     <Button
-      onPress={onPress}
       title={title}
       disabled={disabled}
+      onPress={() => onPress()}
+      noBackground
+      bordered
+      color="#ed4e5f"
     />
-  </View>
+  </Container>
 )
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    color: '#ED4E5F',
-    fontWeight: 'bold',
-    paddingBottom: 10,
-  },
-  subtitle: {
-    fontSize: 20,
-    color: '#ED4E5F',
-    paddingBottom: 10,
-  }
-});
+const Container = styled.View `
+  margin: 5px 0;
+`
 
 export default PrimaryButton
