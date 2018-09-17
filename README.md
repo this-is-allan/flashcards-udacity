@@ -1,1 +1,1 @@
-[![Coverage Status](https://coveralls.io/repos/github/allancarlos123/flashcards-udacity/badge.svg?branch=master)](https://coveralls.io/github/allancarlos123/flashcards-udacity?branch=master)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
