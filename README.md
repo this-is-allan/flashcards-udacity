@@ -1,1 +1,1 @@
-<a href="https://snyk.io/test/github/facebook/jest?targetFile=packages/jest/package.json"><img src="https://snyk.io/test/github/facebook/jest/badge.svg?targetFile=packages/jest/package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/facebook/jest?targetFile=packages/jest/package.json" style="max-width:100%;"></a>
+[![Coverage Status](https://coveralls.io/repos/github/allancarlos123/flashcards-udacity/badge.svg?branch=master)](https://coveralls.io/github/allancarlos123/flashcards-udacity?branch=master)
