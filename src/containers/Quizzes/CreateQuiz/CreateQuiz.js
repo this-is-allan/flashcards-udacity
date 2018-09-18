@@ -1,44 +1,44 @@
-import { isEmpty } from 'lodash';
-import React, { Component } from 'react';
-import { Sector } from '../../../config/theme'
-import { Alert } from 'react-native';
-import TextInputField from '../../../components/TextInputField'
-import PrimaryButton from '../../../components/Buttons/Primary'
-import { connect } from 'react-redux';
-import { newCard } from '../../../actions/quiz';
-import { deckFetch } from '../../../actions/decks';
+import { isEmpty } from "lodash";
+import React, { Component } from "react";
+import { Alert } from "react-native";
+import { connect } from "react-redux";
+import { newCard } from "../../../actions/quiz";
+import { deckFetch } from "../../../actions/decks";
+import { Sector } from "../../../config/theme";
+
+import TextInputField from "../../../components/TextInputField";
+import PrimaryButton from "../../../components/Buttons/Primary";
 
 class CreateQuiz extends Component {
   state = {
-    question: '',
-    answer: ''
-  }
+    question: "",
+    answer: ""
+  };
 
   verifyFormFill = () => {
     let { question, answer } = this.state;
     return isEmpty(question) || isEmpty(answer);
-  }
+  };
 
   onPressCreateQuestion = () => {
-    let card = this.state
-    const { title } = this.props.deck
+    let card = this.state;
+    const { title } = this.props.deck;
 
     this.props.addQuestion(card, title, () => {
-      this.props.deckFetch(title)
+      this.props.deckFetch(title);
       this.setState({
-          question: '',
-          answer: ''
-      })
+        question: "",
+        answer: ""
+      });
+
       Alert.alert(
-        'Success!',
-        'The question was created successfully!',
-        [
-          {text: 'Ok'}
-        ],
+        "Success!",
+        "The question was created successfully!",
+        [{ text: "Ok" }],
         { cancelable: false }
-      )
-    })
-  }
+      );
+    });
+  };
 
   render() {
     let { question, answer } = this.state;
@@ -46,17 +46,17 @@ class CreateQuiz extends Component {
       <Sector>
         <TextInputField
           label="Enter a question for your new card:"
-          onChangeText={question => this.setState({question})}
+          onChangeText={question => this.setState({ question })}
           value={question}
-          placeholder='Type a question'
+          placeholder="Type a question"
           autoFocus
         />
 
         <TextInputField
           label="Enter an answer for your new card:"
-          onChangeText={answer => this.setState({answer})}
+          onChangeText={answer => this.setState({ answer })}
           value={answer}
-          placeholder='Type a answer'
+          placeholder="Type a answer"
         />
 
         <PrimaryButton
@@ -72,14 +72,18 @@ class CreateQuiz extends Component {
 const mapStateToProps = ({ deck }) => {
   return {
     deck: deck.deck
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     deckFetch: deckName => dispatch(deckFetch(deckName)),
-    addQuestion: (card, deckName, callback) => dispatch(newCard(card, deckName, callback))
-  }
-}
+    addQuestion: (card, deckName, callback) =>
+      dispatch(newCard(card, deckName, callback))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateQuiz)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateQuiz);

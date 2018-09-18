@@ -1,14 +1,14 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { Sector } from "../../../config/theme";
 
 import { connect } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 
+import { Sector } from "../../../config/theme";
+import { removeDeck, deckFetch, decksFetch } from "../../../actions/decks";
+
 import PrimaryButton from "../../../components/Buttons/Primary";
 import Header from "../../../components/Header";
-
-import { removeDeck, deckFetch, decksFetch } from "../../../actions/decks";
 
 class ShowDeckScreen extends Component {
   static navigationOptions = ({ navigation }) => ({

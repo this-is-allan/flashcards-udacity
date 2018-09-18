@@ -1,14 +1,12 @@
-import React from 'react';
-import Header from './../Header'
+import React from "react";
 
-const QuizScore = ({
-  score,
-  questionsLength
-}) => (
+import Header from "./../Header";
+
+const QuizScore = ({ score, questionsLength }) => (
   <Header
     title="Finished"
     subtitle={`${score} correct questions from ${questionsLength}`}
   />
-)
+);
 
-export default QuizScore
+export default QuizScore;

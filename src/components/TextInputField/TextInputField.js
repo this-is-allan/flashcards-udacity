@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components/native'
-import { View } from 'react-native';
+import React from "react";
+import styled from "styled-components/native";
+import { View } from "react-native";
 
-const Label = styled.Text ``;
+const Label = styled.Text``;
 
-const Input = styled.TextInput `
+const Input = styled.TextInput`
   height: 40;
-`
+`;
 
 const TextInputField = ({
   label,
@@ -14,14 +14,14 @@ const TextInputField = ({
   placeholder,
   autoFocus,
   value,
-  onChangeText,
+  onChangeText
 }) => (
   <View>
     <Label>{label}</Label>
     <Input
       placeholder={placeholder}
       maxLength={maxLength}
-      selectionColor = '#ED4E5F'
+      selectionColor="#ED4E5F"
       autoCorrect={false}
       autoFocus={autoFocus}
       keyboardType="default"
@@ -31,6 +31,6 @@ const TextInputField = ({
       clearButtonMode="always"
     />
   </View>
-)
+);
 
-export default TextInputField
+export default TextInputField;

@@ -2,9 +2,11 @@ import _ from "lodash";
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { removeDeck, deckFetch } from "../../../actions/decks";
 import CardFlip from "react-native-card-flip";
+
+import { removeDeck, deckFetch } from "../../../actions/decks";
 import { clearLocalNotification } from "../../../util/notifications";
+
 import QuizScore from "../../../components/QuizScore/QuizScore";
 import PrimaryButton from "../../../components/Buttons/Primary";
 
@@ -75,6 +77,7 @@ class ShowQuiz extends Component {
           >
             <CardContent>{questions[currentQuestion].question}</CardContent>
           </CardFace>
+
           <CardFace
             onPress={() => {
               this.setState({ cardFlipped: false });
@@ -121,6 +124,7 @@ const Container = styled.View`
   align-items: center;
   background-color: #ecf0f1;
 `;
+
 const CardFace = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
