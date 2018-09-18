@@ -12,12 +12,6 @@ import theme from './src/config/theme'
 
 import StatusBar from './src/components/StatusBar';
 
-function HeaderLeft({ title }) {
-  return (
-    <Text style={{fontSize: 30, fontWeight: 'bold', paddingLeft: 15}}>{title}</Text>
-  )
-}
-
 export default class App extends React.Component {
   componentDidMount() {
     setLocalNotification()
