@@ -32,7 +32,13 @@ https://github.com/allancarlos123/flashcards-udacity.git
 cd flashcards-udacity
 
 # Install the dependencies
-yarn install
+yarn install or npm install
+
+# Start the project
+yarn start or npm start
+
+## Alternative to start the project
+Open the Expo XDE, and click in Open Project
 ```
 
 ## Running the tests
