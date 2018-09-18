@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
+import { NavigationActions } from "react-navigation";
 
 import { connect } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,13 +11,17 @@ import { removeDeck, deckFetch, decksFetch } from "../../../actions/decks";
 import PrimaryButton from "../../../components/Buttons/Primary";
 import Header from "../../../components/Header";
 
+const backAction = NavigationActions.back({
+  key: null
+});
+
 class ShowDeckScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerLeft: (
       <Ionicons
         name="ios-arrow-back"
         size={30}
-        onPress={() => navigation.navigate("DeckList")}
+        onPress={() => navigation.navigate("Home")}
         style={{ marginLeft: 15 }}
       />
     )

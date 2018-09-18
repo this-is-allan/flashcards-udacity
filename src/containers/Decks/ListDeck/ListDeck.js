@@ -17,6 +17,10 @@ class ListDeck extends Component {
     this.props.fetchDecks();
   }
 
+  componentDidUpdate() {
+    this.props.fetchDecks();
+  }
+
   _keyExtractor = (item, index) => index.toString();
 
   _renderItem = ({ item }) => (
