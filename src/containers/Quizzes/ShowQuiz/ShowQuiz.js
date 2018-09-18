@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import CardFlip from "react-native-card-flip";
@@ -16,7 +16,7 @@ const CountSteps = ({ currentQuestion, questionsLength }) => (
   </QuizTrack>
 );
 
-class ShowQuiz extends Component {
+class ShowQuiz extends PureComponent {
   state = {
     currentQuestion: 0,
     questionsLength: 0,
