@@ -22,6 +22,11 @@
 
 An application where the user creates question and answer cards to carry out the tests and memorize the contents.
 
+
+## Demo
+
+![Demo](https://media.giphy.com/media/TGqEFTd0WsBOFxoLxh/giphy.gif)
+
 ## Getting Started
 
 ```sh
