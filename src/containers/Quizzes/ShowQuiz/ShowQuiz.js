@@ -141,18 +141,14 @@ const CardContent = styled.Text`
   text-align: center;
 `;
 
-mapStateToProps = ({ deck }) => {
-  return {
-    deck: deck.deck
-  };
-};
+mapStateToProps = ({ deck }) => ({
+  deck: deck.deck
+});
 
-mapDispatchToProps = dispatch => {
-  return {
-    deckFetch: id => dispatch(deckFetch(id)),
-    deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
-  };
-};
+mapDispatchToProps = dispatch => ({
+  deckFetch: id => dispatch(deckFetch(id)),
+  deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
+});
 
 export default connect(
   mapStateToProps,

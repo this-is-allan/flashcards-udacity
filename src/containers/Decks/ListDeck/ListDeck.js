@@ -40,17 +40,13 @@ class ListDeck extends Component {
   }
 }
 
-const mapStateToProps = ({ decks }) => {
-  return {
-    decks: decks.decks
-  };
-};
+const mapStateToProps = ({ decks }) => ({
+  decks: decks.decks
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchDecks: () => dispatch(decksFetch())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchDecks: () => dispatch(decksFetch())
+});
 
 export default connect(
   mapStateToProps,

@@ -69,19 +69,15 @@ class CreateQuiz extends Component {
   }
 }
 
-const mapStateToProps = ({ deck }) => {
-  return {
-    deck: deck.deck
-  };
-};
+const mapStateToProps = ({ deck }) => ({
+  deck: deck.deck
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    deckFetch: deckName => dispatch(deckFetch(deckName)),
-    addQuestion: (card, deckName, callback) =>
-      dispatch(newCard(card, deckName, callback))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  deckFetch: deckName => dispatch(deckFetch(deckName)),
+  addQuestion: (card, deckName, callback) =>
+    dispatch(newCard(card, deckName, callback))
+});
 
 export default connect(
   mapStateToProps,

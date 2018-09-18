@@ -80,19 +80,15 @@ class ShowDeckScreen extends Component {
   }
 }
 
-mapStateToProps = ({ deck }) => {
-  return {
-    deck: deck.deck
-  };
-};
+mapStateToProps = ({ deck }) => ({
+  deck: deck.deck
+});
 
-mapDispatchToProps = dispatch => {
-  return {
-    deckFetch: id => dispatch(deckFetch(id)),
-    fetchDecks: () => dispatch(decksFetch()),
-    deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
-  };
-};
+mapDispatchToProps = dispatch => ({
+  deckFetch: id => dispatch(deckFetch(id)),
+  fetchDecks: () => dispatch(decksFetch()),
+  deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
+});
 
 export default connect(
   mapStateToProps,
