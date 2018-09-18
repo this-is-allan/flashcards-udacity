@@ -1,126 +1,156 @@
-import _ from 'lodash'
-import React, { Component } from 'react';
-import styled from 'styled-components'
-import { connect } from 'react-redux';
-import { removeDeck, deckFetch} from '../../../actions/decks'
-import CardFlip from 'react-native-card-flip';
-import { clearLocalNotification } from '../../../util/notifications'
-import QuizScore from '../../../components/QuizScore/QuizScore';
-import PrimaryButton from '../../../components/Buttons/Primary'
+import _ from "lodash";
+import React, { Component } from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import { removeDeck, deckFetch } from "../../../actions/decks";
+import CardFlip from "react-native-card-flip";
+import { clearLocalNotification } from "../../../util/notifications";
+import QuizScore from "../../../components/QuizScore/QuizScore";
+import PrimaryButton from "../../../components/Buttons/Primary";
 
-const CountSteps = ({currentQuestion, questionsLength}) => (
-	<QuizTrack>{currentQuestion+1}/{questionsLength}</QuizTrack>
-)
+const CountSteps = ({ currentQuestion, questionsLength }) => (
+  <QuizTrack>
+    {currentQuestion + 1}/{questionsLength}
+  </QuizTrack>
+);
 
 class ShowQuiz extends Component {
-	state = {
-		currentQuestion: 0,
-		questionsLength: 0,
-		score: 0,
-		showAnswer: false,
-		cardFlipped: false,
-	}
+  state = {
+    currentQuestion: 0,
+    questionsLength: 0,
+    score: 0,
+    showAnswer: false,
+    cardFlipped: false
+  };
 
-	componentDidMount = () => {
-		this.setState({ questionsLength: this.props.deck.questions.length})
-		clearLocalNotification()
-	};
-	
-	
-	onPressNext = (correct) => {
-		correct && this.setState({ score: this.state.score + 1 })
+  componentDidMount = () => {
+    this.setState({ questionsLength: this.props.deck.questions.length });
+    clearLocalNotification();
+  };
 
-		if (this.state.cardFlipped === true) {
-			this.card.flip()
-		}
+  onPressNext = correct => {
+    correct && this.setState({ score: this.state.score + 1 });
 
-		setTimeout(() => {
-			this.setState({
-				showAnswer: false,
-				currentQuestion: ++this.state.currentQuestion,
-			})
-		}, 200);
-	}
-	
-	render() {
-		const { questions } = this.props.deck
-		let {
-			currentQuestion,
-			questionsLength,
-			score,
-			showAnswer,
-		} = this.state
+    if (this.state.cardFlipped === true) {
+      this.card.flip();
+    }
 
-		if (currentQuestion === questionsLength) {
-			return (
-				<Container>
-					<QuizScore score={score} questionsLength={questionsLength} />
-				</Container>
-			)
-		}
+    setTimeout(() => {
+      this.setState({
+        showAnswer: false,
+        currentQuestion: ++this.state.currentQuestion
+      });
+    }, 200);
+  };
 
-		return (
-			<Container>
-				<CountSteps currentQuestion={currentQuestion} questionsLength={questionsLength} />
+  render() {
+    const { questions } = this.props.deck;
+    let { currentQuestion, questionsLength, score, showAnswer } = this.state;
 
-				<CardFlip onFlip={() => this.setState({ showAnswer: true })} style={{width: 320, height: 470}} ref={(card) => this.card = card} >
-					<CardFace onPress={() => {this.setState({cardFlipped: true}); this.card.flip()}}><CardContent>{questions[currentQuestion].question}</CardContent></CardFace>
-					<CardFace onPress={() => {this.setState({cardFlipped: false}); this.card.flip()}}><CardContent>{questions[currentQuestion].answer}</CardContent></CardFace>
-				</CardFlip>
+    if (currentQuestion === questionsLength) {
+      return (
+        <Container>
+          <QuizScore score={score} questionsLength={questionsLength} />
+        </Container>
+      );
+    }
 
-				<PrimaryButton
-					title="Correct"
-					onPress={() => this.onPressNext(true)}
-					disabled={!showAnswer}
-				/>
+    return (
+      <Container>
+        <CountSteps
+          currentQuestion={currentQuestion}
+          questionsLength={questionsLength}
+        />
 
-				<PrimaryButton
-					title="Incorrect"
-					onPress={() => this.onPressNext(false)}
-					disabled={!showAnswer}
-				/>
-			</Container>
-		)
-	}
-}
+        <CardFlip
+          onFlip={() => this.setState({ showAnswer: true })}
+          style={{ width: 320, height: 470 }}
+          ref={card => (this.card = card)}
+        >
+          <CardFace
+            onPress={() => {
+              this.setState({ cardFlipped: true });
+              this.card.flip();
+            }}
+          >
+            <CardContent>{questions[currentQuestion].question}</CardContent>
+          </CardFace>
+          <CardFace
+            onPress={() => {
+              this.setState({ cardFlipped: false });
+              this.card.flip();
+            }}
+          >
+            <CardContent>{questions[currentQuestion].answer}</CardContent>
+          </CardFace>
+        </CardFlip>
 
-const QuizTrack = styled.Text `
-	color: #7f8fa6;
-`
+        <ContainerHorizontal>
+          <PrimaryButton
+            title="Correct"
+            onPress={() => this.onPressNext(true)}
+            disabled={!showAnswer}
+            color="green"
+          />
 
-const Container = styled.View `
-	flex: 1;
-	justify-content: center;
-	align-items: center;
-	background-color: #fff;
-`
-const CardFace = styled.TouchableOpacity `
-	display: flex;
-	justify-content: center;
-	width: 320px;
-	height: 470px;
-	padding: 30px;
-	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 1px 3px rgba(0,0,0,.15);
-`
-
-const CardContent = styled.Text `
-	font-size: 18px;
-	text-align: center;
-`
-
-mapStateToProps = ({deck}) => {
-  return {
-    deck: deck.deck
+          <PrimaryButton
+            title="Incorrect"
+            onPress={() => this.onPressNext(false)}
+            disabled={!showAnswer}
+          />
+        </ContainerHorizontal>
+      </Container>
+    );
   }
 }
+
+const QuizTrack = styled.Text`
+  color: #7f8fa6;
+`;
+
+const ContainerHorizontal = styled.View`
+  flex-direction: row;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: space-around;
+`;
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+`;
+const CardFace = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  width: 320px;
+  height: 470px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 3px rgba(0, 0, 0, 0.15);
+`;
+
+const CardContent = styled.Text`
+  font-size: 18px;
+  text-align: center;
+`;
+
+mapStateToProps = ({ deck }) => {
+  return {
+    deck: deck.deck
+  };
+};
 
 mapDispatchToProps = dispatch => {
   return {
     deckFetch: id => dispatch(deckFetch(id)),
     deleteDeck: (deck, callback) => dispatch(removeDeck(deck, callback))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowQuiz);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShowQuiz);

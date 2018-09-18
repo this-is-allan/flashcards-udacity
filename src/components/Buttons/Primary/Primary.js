@@ -1,13 +1,8 @@
-import React from 'react';
-import styled from 'styled-components/native';
-import Button from 'react-native-buttonex'
+import React from "react";
+import styled from "styled-components/native";
+import Button from "react-native-buttonex";
 
-
-const PrimaryButton = ({
-  title,
-  onPress,
-  disabled
-}) => (
+const PrimaryButton = ({ title, onPress, disabled, color }) => (
   <Container>
     <Button
       title={title}
@@ -15,13 +10,13 @@ const PrimaryButton = ({
       onPress={() => onPress()}
       noBackground
       bordered
-      color="#ed4e5f"
+      color={color ? color : "#ed4e5f"}
     />
   </Container>
-)
+);
 
-const Container = styled.View `
+const Container = styled.View`
   margin: 5px 0;
-`
+`;
 
-export default PrimaryButton
+export default PrimaryButton;
