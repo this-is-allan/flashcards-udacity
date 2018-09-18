@@ -1,14 +1,12 @@
-import styled from 'styled-components/native';
+import styled from "styled-components/native";
 
-export const light = {
-  backgroundColor: '#fff',
-}
+export const theme = {
+  backgroundColor: "#fff"
+};
 
-export const dark = {
-  backgroundColor: '#000',
-}
-
-export const Sector = styled.View `
+export const Sector = styled.View`
   padding: 20px;
   background-color: ${props => props.theme.backgroundColor};
 `;
+
+export default theme;

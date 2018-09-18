@@ -7,9 +7,8 @@ import { AsyncStorage } from "react-native"
 
 import { MainNavigator } from './src/config/routes';
 import { setLocalNotification } from './src/util/notifications'
-import { white } from './src/config/colors'
 import store from './src/config/store'
-import { light, dark } from './src/config/theme'
+import theme from './src/config/theme'
 
 import StatusBar from './src/components/StatusBar';
 
@@ -20,34 +19,16 @@ function HeaderLeft({ title }) {
 }
 
 export default class App extends React.Component {
-  state = {
-    isReady: false,
-    darkMode: false,
-  }
-  
   componentDidMount() {
     setLocalNotification()
   };
   
   render() {
-    let { isReady, darkMode} = this.state;
-    
-    if (this.state.isReady) {
-      return (
-        <AppLoading
-          startAsync={this._retrieveData}
-          onFinish={() => this.setState({ isReady: true })}
-          onError={console.warn}
-        />
-      )
-    }
-
     return (
       <Provider store={store}>
-        <ThemeProvider theme={darkMode ? dark : light}>
+        <ThemeProvider theme={theme}>
           <View style={{flex: 1}}>
-            <StatusBar backgroundColor={white} barStyle="dark-content" />
-            {/* <Button title="DarkMode" onPress={() => this.handleDarkMode()} /> */}
+            <StatusBar backgroundColor="#fff" barStyle="dark-content" />
             <MainNavigator />
           </View>
         </ThemeProvider>
