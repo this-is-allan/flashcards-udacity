@@ -1,10 +1,8 @@
-import { combineReducers } from 'redux'
-import decks from './decks'
-import deck from './deck'
-// import quiz from './quiz'
+import { combineReducers } from "redux";
+import decks from "./decks";
+import deck from "./deck";
 
 export default combineReducers({
-    decks,
-    deck,
-    // quiz,
-})
+  decks,
+  deck
+});
