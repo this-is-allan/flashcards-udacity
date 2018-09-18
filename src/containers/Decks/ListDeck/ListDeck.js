@@ -1,8 +1,11 @@
+import _ from "lodash";
 import React, { Component } from "react";
+import { Image } from "react-native";
 import styled from "styled-components";
 import { FlatList, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
+import { Sector } from "../../../config/theme";
 import { decksFetch } from "./../../../actions/decks";
 
 const ListDeckItem = styled.Text`
@@ -34,6 +37,14 @@ class ListDeck extends Component {
   );
 
   render() {
+    if (_.isEmpty(this.props.decks)) {
+      return (
+        <Sector style={{ alignItems: "center" }}>
+          <Image source={require("../../../images/empty-box.png")} />
+        </Sector>
+      );
+    }
+
     return (
       <FlatList
         data={Object.values(this.props.decks)}
