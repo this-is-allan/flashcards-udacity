@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import { decksFetch } from "./../../../actions/decks";
 
 const ListDeckItem = styled.Text`
-  paddingtop: 10px;
-  paddingbottom: 10px;
-  fontsize: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 18px;
   height: 44px;
 `;
 
