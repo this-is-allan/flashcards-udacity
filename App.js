@@ -2,8 +2,6 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import { View, Text, Button } from 'react-native';
 import { Provider } from 'react-redux'
-import { Asset, AppLoading } from 'expo';
-import { AsyncStorage } from "react-native"
 
 import { MainNavigator } from './src/config/routes';
 import { setLocalNotification } from './src/util/notifications'
@@ -28,13 +26,5 @@ export default class App extends React.Component {
         </ThemeProvider>
       </Provider>
     );
-  }
-
-  handleDarkMode = () => {
-    this.setState({ darkMode: false })
-  }
-
-  async _cacheResourcesAsync() {
-    return true;
   }
 }
