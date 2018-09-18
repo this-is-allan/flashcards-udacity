@@ -119,7 +119,7 @@ const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #ecf0f1;
 `;
 const CardFace = styled.TouchableOpacity`
   display: flex;
