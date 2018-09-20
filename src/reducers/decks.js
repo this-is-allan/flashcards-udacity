@@ -36,7 +36,7 @@ export default function decks(
         ...state,
         isFetching: false,
         fetchError: false,
-        decks: action.decks
+        decks: action.payload
       };
     case DELETE_DECK:
       return _.omit(state, action.payload);

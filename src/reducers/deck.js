@@ -10,7 +10,7 @@ export default function deck(
     case RECEIVE_DECK:
       return {
         ...state,
-        deck: action.deck
+        deck: action.payload
       };
     default:
       return state;
