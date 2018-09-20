@@ -45,6 +45,18 @@ class ShowQuiz extends PureComponent {
     }, 200);
   };
 
+  restartQuiz = () => {
+    this.setState({
+      score: 0,
+      currentQuestion: 0
+    });
+  };
+
+  backToDeck = () => {
+    const { deck } = this.props.navigation.state.params;
+    this.props.navigation.navigate("DeckShow", { title: deck });
+  };
+
   render() {
     const { questions } = this.props.deck;
     let { currentQuestion, questionsLength, score, showAnswer } = this.state;
@@ -53,6 +65,16 @@ class ShowQuiz extends PureComponent {
       return (
         <Container>
           <QuizScore score={score} questionsLength={questionsLength} />
+
+          <PrimaryButton
+            title="Restart Quiz"
+            onPress={() => this.restartQuiz()}
+          />
+          <PrimaryButton
+            title="Back to Deck"
+            color="gray"
+            onPress={() => this.backToDeck()}
+          />
         </Container>
       );
     }

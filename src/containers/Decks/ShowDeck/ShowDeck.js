@@ -42,7 +42,7 @@ class ShowDeckScreen extends Component {
   };
 
   onPressStartQuiz = () => {
-    this.props.navigation.navigate("Quiz");
+    this.props.navigation.navigate("Quiz", { deck: this.props.deck.title });
   };
 
   defineHeader = questions => {
