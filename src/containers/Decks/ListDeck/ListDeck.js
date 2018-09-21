@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import { Image } from "react-native";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { FlatList, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 

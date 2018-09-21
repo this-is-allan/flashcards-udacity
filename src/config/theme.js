@@ -6,7 +6,7 @@ export const theme = {
 
 export const Sector = styled.View`
   padding: 20px;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: #fff;
 `;
 
 export default theme;

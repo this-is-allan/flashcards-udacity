@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { PureComponent } from "react";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { connect } from "react-redux";
 import CardFlip from "react-native-card-flip";
 
