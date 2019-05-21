@@ -21,7 +21,9 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
@@ -35,7 +37,7 @@
   "dependencies": {
     "expo": "^27.0.1",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react-native": "~0.59.0",
     "react-native-buttonex": "^2.0.8",
     "react-native-card-flip": "^1.0.3",
     "react-navigation": "^2.8.0",
@@ -43,6 +45,8 @@
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^3.4.6"
-  }
+    "styled-components": "^3.4.6",
+    "snyk": "^1.165.1"
+  },
+  "snyk": true
 }
