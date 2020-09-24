@@ -34,11 +34,11 @@
   },
   "dependencies": {
     "expo": "^27.0.1",
-    "react": "16.3.1",
+    "react": "16.5.0",
     "react-native": "~0.59.0",
     "react-native-buttonex": "^2.0.8",
     "react-native-card-flip": "^1.0.3",
-    "react-navigation": "^2.8.0",
+    "react-navigation": "^3.0.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-persist": "^5.10.0",
