@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.19.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - react-native > @react-native-community/cli > @react-native-community/cli-tools > lodash:
+        patched: '2021-03-05T08:15:19.168Z'
+    - react-native > @react-native-community/cli > @react-native-community/cli-platform-ios > @react-native-community/cli-tools > lodash:
+        patched: '2021-03-05T08:15:19.168Z'
