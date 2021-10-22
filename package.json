@@ -35,7 +35,7 @@
   "dependencies": {
     "expo": "^27.0.1",
     "react": "16.3.1",
-    "react-native": "~0.60.0",
+    "react-native": "~0.62.0",
     "react-native-buttonex": "^2.0.8",
     "react-native-card-flip": "^1.0.3",
     "react-navigation": "^2.8.0",
